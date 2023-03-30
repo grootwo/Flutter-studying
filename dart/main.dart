@@ -1,6 +1,10 @@
 void main() {
-  var name1 = "No.1 Name";
-  String name2 = "No.2 Name";
-  print(name1 + name2);
-  // name1 = 1
+  var name;
+  // or dynamic name;
+  if (name is String) {
+    // name can be used as String
+  }
+  if (name is int) {
+    // name can be used as int
+  }
 }
