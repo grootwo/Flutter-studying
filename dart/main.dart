@@ -1,10 +1,9 @@
 void main() {
-  var name;
-  // or dynamic name;
-  if (name is String) {
-    // name can be used as String
-  }
-  if (name is int) {
-    // name can be used as int
-  }
+  // name can be null or String
+  String? name = 'Hi';
+  name?.isEmpty;
+  // these are same
+//   if (name != null) {
+//     name.isEmpty;
+//   }
 }
