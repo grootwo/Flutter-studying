@@ -1,7 +1,7 @@
 void main() {
-  late final num;
-  // late can be set after defined
-  const text = "Hello";
-  // const can not be changed
-  // text = "hi";
+  var numbers = [1, 2, 3, 4,];
+  numbers.add(5);
+  print(numbers);
+  print(numbers.first);
+  print(numbers.last);
 }
