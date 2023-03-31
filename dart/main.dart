@@ -1,5 +1,5 @@
 void main() {
-  final num = 0;
-  // final can be set only once
-  // num = 1;
+  late final num;
+  // late can be set after defined
+  num = 1;
 }
