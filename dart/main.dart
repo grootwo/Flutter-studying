@@ -1,9 +1,9 @@
 void main() {
-  var oldFriends = ['cat', 'dog'];
-  var newFriends = [
-    'Parrot',
-    'Elephant',
-    for (var friend in oldFriends) '👐 $friend',
-  ];
-  print(newFriends);
+  Map<String, bool> info = {
+    "isOkay": true,
+    "isHungry": false,
+    "sayHello": true,
+  };
+  print(info.keys);
+  print(info.values);
 }
