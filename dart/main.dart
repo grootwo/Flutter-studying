@@ -1,7 +1,7 @@
 String sayInfo({
-  String name = "Anonymous",
-  String hobby = "somthing",
-  int num = 0,
+  required String name,
+  required String hobby,
+  required int num,
 }) {
   return "$name likes to do $hobby for fun and input $num";
 }
