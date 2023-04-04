@@ -1,15 +1,7 @@
-String sayInfo({
-  required String name,
-  required String hobby,
-  required int num,
-}) {
+String sayInfo(String name, String hobby, [int? num = 0]) {
   return "$name likes to do $hobby for fun and input $num";
 }
 
 void main() {
-  print(sayInfo(
-    name: 'Hola',
-    num: 50,
-    hobby: 'Judo',
-  ));
+  print(sayInfo('Hola', 'Judo', 70));
 }
