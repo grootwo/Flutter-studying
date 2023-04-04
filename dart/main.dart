@@ -1,11 +1,15 @@
-String sayName(String name) {
-  name = name + '!';
-  return 'It\'s $name';
+String sayInfo({
+  String name = "Anonymous",
+  String hobby = "somthing",
+  int num = 0,
+}) {
+  return "$name likes to do $hobby for fun and input $num";
 }
 
-num getSum(num num1, num num2) => num1 + num2;
-
 void main() {
-  print(sayName('hola'));
-  print(getSum(0, 10));
+  print(sayInfo(
+    name: 'Hola',
+    num: 50,
+    hobby: 'Judo',
+  ));
 }
