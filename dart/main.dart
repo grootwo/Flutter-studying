@@ -1,6 +1,7 @@
+// left : right
+// if left is null return right
+String getUpper(String? text) => text?.toUpperCase() ?? "NONE";
+
 void main() {
-  String? text;
-  text ??= 'not null';
-  text ??= 'not null 2';
-  print(text);
+  print(getUpper('test'));
 }
