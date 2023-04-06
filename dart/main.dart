@@ -1,14 +1,20 @@
 class Player {
-	late final String name;
-	late int xp;
-	Player(this.name, this.xp);
+	final String name;
+	int xp;
+	String team;
+	int grade;
+	Player({required this.name, required this.xp, required this.team, required this.grade,});
 	void sayHello() {
-		print('hi my name is $name ($xp)');
+		print('$name, $xp, $team, $grade');
 	}
 }
 
 void main() {
-	var player1 = Player('hwido', 99);
-	print(player1.name);
-	player1.sayHello();
+	var player1 = Player(
+		name: 'hwido',
+		xp: 99,
+		team: 'Only one',
+		grade: 100,
+	);
+  player1.sayHello();
 }
