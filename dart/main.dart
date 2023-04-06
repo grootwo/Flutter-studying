@@ -1,10 +1,13 @@
-// typedef can make alias to data types
-typedef MyMap = Map<String, String>;
-
-String getMyMap(MyMap input) {
-  return "${input['first']}, ${input['second']}";
+class Player {
+	String name = 'hwido';
+	int xp = 999;
+	void sayHello() {
+		print('hi my name is $name');
+	}
 }
 
 void main() {
-  print(getMyMap({'first': 'FIRST', 'second': 'SECOND'}));
+	var player1 = Player();
+	print(player1.name);
+	player1.sayHello();
 }
