@@ -1,5 +1,5 @@
 class Player {
-	final String name, team;
+	String name, team;
 	int xp, grade;
 
 	Player({
@@ -8,29 +8,17 @@ class Player {
 		required this.team,
 		required this.grade,		
 	});
-	Player.createRedPlayer({required String name, required int grade }) :
-		this.grade = grade,
-		this.name = name,
-		this.xp = 10,
-		this.team = "Red";
 
-	Player.createBluePlayer(String name, int grade) :
-		this.grade = grade,
-		this.name = name,
-		this.xp = 0,
-		this.team = "Blue";
-  
-   sayHello() {
-      print("$name / $team / $xp / $grade");
-   }
- }
+	sayHello() {
+    print("$name / $team / $xp / $grade");
+  }
+}
 
 void main() {
-	var player1 = Player.createRedPlayer(
-		name: "halo",
-		grade: 4,
-	);
-   player1.sayHello();
-	var player2 = Player.createBluePlayer("sky", 5);
-   player2.sayHello();
+	var player = Player(name: "halo", xp: 1, team: "Green", grade: 10)
+	..name = "hello"
+	..xp = 100
+	..team = "Blue"
+	..grade = 9
+	..sayHello();
 }
