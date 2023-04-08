@@ -1,7 +1,9 @@
+enum Team { red, blue }
+
 class Player {
 	final String name;
 	int xp;
-	String team;
+	Team team;
 	int grade;
 	Player({required this.name, required this.xp, required this.team, required this.grade,});
 	void sayHello() {
@@ -13,7 +15,7 @@ void main() {
 	var player1 = Player(
 		name: 'hwido',
 		xp: 99,
-		team: 'Only one',
+		team: Team.red,
 		grade: 100,
 	);
   player1.sayHello();
