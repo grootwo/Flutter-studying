@@ -1,3 +1,7 @@
+class Creature {
+	void live();
+}
+
 enum Team { red, blue }
 
 class Player {
@@ -18,5 +22,5 @@ void main() {
 		team: Team.red,
 		grade: 100,
 	);
-  player1.sayHello();
+	player1.sayHello();
 }
