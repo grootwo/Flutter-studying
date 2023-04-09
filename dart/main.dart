@@ -2,7 +2,7 @@ abstract class Creature {
 	void live();
 }
 
-enum Team { red, blue }
+enum Team { cat, dog }
 
 class Player extends Creature {
 	final String name;
@@ -20,9 +20,9 @@ class Player extends Creature {
 
 void main() {
 	var player1 = Player(
-		name: 'hwido',
+		name: 'halo',
 		xp: 99,
-		team: Team.red,
+		team: Team.cat,
 		grade: 100,
 	);
 	player1.sayHello();
