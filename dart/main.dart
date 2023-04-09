@@ -1,4 +1,4 @@
-class Creature {
+abstract class Creature {
 	void live();
 }
 
