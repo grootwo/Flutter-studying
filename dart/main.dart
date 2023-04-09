@@ -14,7 +14,7 @@ class Player extends Creature {
 		print('$name, $xp, $team, $grade');
 	}
 	void live() {
-		print("Creture is living");
+		print("Creature is living");
 	}
 }
 
