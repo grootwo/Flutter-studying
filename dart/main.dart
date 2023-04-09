@@ -4,7 +4,7 @@ abstract class Creature {
 
 enum Team { red, blue }
 
-class Player {
+class Player extends Creature {
 	final String name;
 	int xp;
 	Team team;
@@ -12,6 +12,9 @@ class Player {
 	Player({required this.name, required this.xp, required this.team, required this.grade,});
 	void sayHello() {
 		print('$name, $xp, $team, $grade');
+	}
+	void live() {
+		print("Creture is living");
 	}
 }
 
@@ -23,4 +26,5 @@ void main() {
 		grade: 100,
 	);
 	player1.sayHello();
+	player1.live();
 }
