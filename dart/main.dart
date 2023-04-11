@@ -9,8 +9,8 @@ class Creature {
 enum Group { cat, dog }
 
 class Player extends Creature {
-	Group group;
-	Player({required name, required this.group,}) : super(name: name);
+  Group group;
+  Player({required name, required this.group,}) : super(name: name);
 	
   @override
   void printLive() {
@@ -20,9 +20,9 @@ class Player extends Creature {
 }
 
 void main() {
-	var player1 = Player(
-		name: "hwido",
-		group: Group.cat,
-	);
-	player1.printLive();
+  var player1 = Player(
+    name: "hwido",
+    group: Group.cat,
+  );
+  player1.printLive();
 }
