@@ -11,6 +11,12 @@ enum Team { cat, dog }
 class Player extends Creature {
 	Team team;
 	Player({required name, required this.team,}) : super(name: name);
+	
+  @override
+  void printLive() {
+    super.printLive();
+    print("And my team is $team");
+  }
 }
 
 void main() {
