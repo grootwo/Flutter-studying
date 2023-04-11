@@ -1,30 +1,22 @@
-abstract class Creature {
-	void live();
+class Creature {
+  final String name;
+  Creature({required this.name});
+	void printLive() {
+    print("I'm alive and my name is $name");
+  }
 }
 
 enum Team { cat, dog }
 
 class Player extends Creature {
-	final String name;
-	int xp;
 	Team team;
-	int grade;
-	Player({required this.name, required this.xp, required this.team, required this.grade,});
-	void sayHello() {
-		print('$name, $xp, $team, $grade');
-	}
-	void live() {
-		print("Creature is living");
-	}
+	Player({required name, required this.team,}) : super(name: name);
 }
 
 void main() {
 	var player1 = Player(
-		name: 'halo',
-		xp: 99,
-		team: Team.cat,
-		grade: 100,
+		name: 'hwido',
+		team: Team.red,
 	);
-	player1.sayHello();
-	player1.live();
+	player1.printLive();
 }
