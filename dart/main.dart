@@ -18,7 +18,7 @@ class Creature {
 
 enum Group { cat, dog }
 
-class Player extends Creature {
+class Player extends Creature with Intelligence {
 	Group group;
 	Player({required name, required this.group,}) : super(name: name);
 	
@@ -35,4 +35,7 @@ void main() {
 		group: Group.cat,
 	);
 	player1.printLive();
+  
+  player1.setILevel(100);
+  player1.printILevel();
 }
