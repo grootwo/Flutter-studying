@@ -1,3 +1,13 @@
+class Intelligence {
+  int intelligenceLevel = 0;
+  void setILevel(int level) {
+    this.intelligenceLevel = level;
+  }
+  void printILevel() {
+    print("Intelligence level: $intelligenceLevel");
+  }
+}
+
 class Creature {
   final String name;
   Creature({required this.name});
@@ -9,8 +19,8 @@ class Creature {
 enum Group { cat, dog }
 
 class Player extends Creature {
-  Group group;
-  Player({required name, required this.group,}) : super(name: name);
+	Group group;
+	Player({required name, required this.group,}) : super(name: name);
 	
   @override
   void printLive() {
@@ -20,9 +30,9 @@ class Player extends Creature {
 }
 
 void main() {
-  var player1 = Player(
-    name: "hwido",
-    group: Group.cat,
-  );
-  player1.printLive();
+	var player1 = Player(
+		name: "halo",
+		group: Group.cat,
+	);
+	player1.printLive();
 }
