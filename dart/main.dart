@@ -8,6 +8,12 @@ class Intelligence {
   }
 }
 
+class Brave {
+  void printBrave() {
+    print("I'm brave!");
+  }
+}
+
 class Creature {
   final String name;
   Creature({required this.name});
@@ -18,7 +24,7 @@ class Creature {
 
 enum Group { cat, dog }
 
-class Player extends Creature with Intelligence {
+class Player extends Creature with Intelligence, Brave {
 	Group group;
 	Player({required name, required this.group,}) : super(name: name);
 	
@@ -38,4 +44,5 @@ void main() {
   
   player1.setILevel(100);
   player1.printILevel();
+  player1.printBrave();
 }
