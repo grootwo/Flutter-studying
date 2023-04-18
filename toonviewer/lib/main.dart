@@ -13,6 +13,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.lightGreen[700],
           title: Text('Hello Again!!!'),
         ),
         body: Center(
