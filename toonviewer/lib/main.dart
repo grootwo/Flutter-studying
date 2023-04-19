@@ -13,6 +13,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
+        body: Column(
+          children: [Row()],
         ),
       ),
     );
