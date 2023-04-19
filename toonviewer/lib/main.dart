@@ -12,12 +12,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightGreen[700],
-          title: Text('Hello Again!!!'),
-        ),
-        body: Center(
-          child: Text('Hello World!!!'),
+        backgroundColor: Colors.black,
         ),
       ),
     );
