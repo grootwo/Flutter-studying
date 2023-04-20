@@ -14,7 +14,28 @@ class App extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.black,
         body: Column(
-          children: [Row()],
+          children: [
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      'Hey Halo',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      'Welcome back',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            )
+          ],
         ),
       ),
     );
