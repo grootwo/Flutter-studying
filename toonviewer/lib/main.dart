@@ -19,6 +19,9 @@ class App extends StatelessWidget {
               children: [
                 Column(
                   children: [
+                    SizedBox(
+                      height: 100,
+                    ),
                     Text(
                       'Hey Halo',
                       style: TextStyle(
