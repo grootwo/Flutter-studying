@@ -16,8 +16,10 @@ class App extends StatelessWidget {
         body: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     SizedBox(
                       height: 100,
@@ -26,12 +28,14 @@ class App extends StatelessWidget {
                       'Hey Halo',
                       style: TextStyle(
                         color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
                     Text(
                       'Welcome back',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.white.withOpacity(0.8),
                       ),
                     ),
                   ],
