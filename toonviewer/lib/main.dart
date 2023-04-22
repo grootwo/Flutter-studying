@@ -55,7 +55,9 @@ class App extends StatelessWidget {
                     fontSize: 25,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(
+                  height: 20,
+                ),
                 Text(
                   '\$8 365 239',
                   style: TextStyle(
@@ -63,6 +65,31 @@ class App extends StatelessWidget {
                     fontSize: 35,
                     fontWeight: FontWeight.w800,
                   ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(35),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 23,
+                          vertical: 20,
+                        ),
+                        child: Text(
+                          'Transfer',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),
