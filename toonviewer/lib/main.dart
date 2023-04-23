@@ -7,14 +7,16 @@ void main() {
 // flutter is all about widget
 // StatelessWidget show screens
 class App extends StatelessWidget {
+  const App({super.key});
+
   // must build
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          backgroundColor: Color(0xFF181818),
+          backgroundColor: const Color(0xFF181818),
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -24,10 +26,10 @@ class App extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 100,
                         ),
-                        Text(
+                        const Text(
                           'Hey Halo',
                           style: TextStyle(
                             color: Colors.white,
@@ -45,7 +47,7 @@ class App extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
@@ -55,10 +57,10 @@ class App extends StatelessWidget {
                     fontSize: 25,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text(
+                const Text(
                   '\$8 365 239',
                   style: TextStyle(
                     color: Colors.white,
@@ -66,7 +68,7 @@ class App extends StatelessWidget {
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Row(
@@ -76,7 +78,7 @@ class App extends StatelessWidget {
                         color: Colors.amber,
                         borderRadius: BorderRadius.circular(35),
                       ),
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 23,
                           vertical: 20,
