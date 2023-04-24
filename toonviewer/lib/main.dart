@@ -72,6 +72,7 @@ class App extends StatelessWidget {
                   height: 30,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       decoration: BoxDecoration(
@@ -80,13 +81,32 @@ class App extends StatelessWidget {
                       ),
                       child: const Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 23,
+                          horizontal: 35,
                           vertical: 20,
                         ),
                         child: Text(
                           'Transfer',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 68, 68, 68),
+                        borderRadius: BorderRadius.circular(35),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 35,
+                          vertical: 20,
+                        ),
+                        child: Text(
+                          'Request',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.white,
                           ),
                         ),
                       ),
