@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/button.dart';
+
 void main() {
   runApp(const App());
 }
@@ -73,44 +75,15 @@ class App extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 35,
-                          vertical: 20,
-                        ),
-                        child: Text(
-                          'Transfer',
-                          style: TextStyle(
-                            fontSize: 25,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 68, 68, 68),
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 35,
-                          vertical: 20,
-                        ),
-                        child: Text(
-                          'Request',
-                          style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
+                  children: const [
+                    Button(
+                        text: 'Transfer',
+                        textColor: Colors.black,
+                        bgColor: Colors.amber),
+                    Button(
+                        text: 'Request',
+                        textColor: Colors.white,
+                        bgColor: Color(0xFF1F2123)),
                   ],
                 )
               ],
