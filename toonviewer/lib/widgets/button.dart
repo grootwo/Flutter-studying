@@ -19,8 +19,8 @@ class Button extends StatelessWidget {
         color: bgColor,
         borderRadius: BorderRadius.circular(35),
       ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
           horizontal: 35,
           vertical: 20,
         ),
