@@ -90,6 +90,8 @@ class App extends StatelessWidget {
                   height: 100,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     const Text(
                       'Wallets',
@@ -103,7 +105,7 @@ class App extends StatelessWidget {
                       'View All',
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.8),
-                        fontSize: 25,
+                        fontSize: 20,
                       ),
                     )
                   ],
