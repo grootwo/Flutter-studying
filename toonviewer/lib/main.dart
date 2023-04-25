@@ -90,8 +90,8 @@ class App extends StatelessWidget {
                   height: 100,
                 ),
                 Row(
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'Wallets',
                       style: TextStyle(
                         fontWeight: FontWeight.w800,
