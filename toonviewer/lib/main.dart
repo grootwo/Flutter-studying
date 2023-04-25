@@ -85,6 +85,28 @@ class App extends StatelessWidget {
                         textColor: Colors.white,
                         bgColor: Color(0xFF1F2123)),
                   ],
+                ),
+                const SizedBox(
+                  height: 100,
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'Wallets',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        fontSize: 35,
+                      ),
+                    ),
+                    Text(
+                      'View All',
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.8),
+                        fontSize: 25,
+                      ),
+                    )
+                  ],
                 )
               ],
             ),
