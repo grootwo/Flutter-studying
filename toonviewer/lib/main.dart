@@ -111,7 +111,7 @@ class App extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 100,
+                  height: 30,
                 ),
                 Row(
                   children: [
@@ -121,23 +121,26 @@ class App extends StatelessWidget {
                           "Euro",
                           style: TextStyle(
                             color: Colors.white,
-                            fontWeight: FontWeight.w600,
+                            fontSize: 35,
                           ),
                         ),
                         Row(
                           children: const [
                             Text(
-                              "Euro",
+                              "6 428",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 25,
                               ),
                             ),
+                            SizedBox(
+                              height: 50,
+                            ),
                             Text(
-                              "Euro",
+                              "EUR",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 25,
                               ),
                             ),
                           ],
