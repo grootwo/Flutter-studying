@@ -109,7 +109,43 @@ class App extends StatelessWidget {
                       ),
                     )
                   ],
-                )
+                ),
+                const SizedBox(
+                  height: 100,
+                ),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        const Text(
+                          "Euro",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Row(
+                          children: const [
+                            Text(
+                              "Euro",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              "Euro",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
           )),
