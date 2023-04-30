@@ -114,6 +114,7 @@ class App extends StatelessWidget {
                   height: 30,
                 ),
                 Container(
+                  clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                     color: const Color(0xFF1F2123),
                     borderRadius: BorderRadius.circular(25),
@@ -161,9 +162,9 @@ class App extends StatelessWidget {
                           ],
                         ),
                         Transform.scale(
-                          scale: 2,
+                          scale: 2.3,
                           child: Transform.translate(
-                            offset: const Offset(10, 18),
+                            offset: const Offset(0, 15),
                             child: const Icon(
                               Icons.euro_symbol,
                               color: Colors.white,
