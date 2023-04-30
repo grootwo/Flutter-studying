@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Card extends StatelessWidget {
+class CurrencyCard extends StatelessWidget {
   final String currency;
   final String amount;
   final String code;
@@ -9,7 +9,7 @@ class Card extends StatelessWidget {
 
   final Color _black = const Color(0xFF1F2123);
 
-  const Card({
+  const CurrencyCard({
     super.key,
     required this.currency,
     required this.amount,
