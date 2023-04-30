@@ -31,7 +31,7 @@ class App extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           const SizedBox(
-                            height: 100,
+                            height: 50,
                           ),
                           const Text(
                             'Hey, Halo',
@@ -122,19 +122,25 @@ class App extends StatelessWidget {
                     icon: Icons.euro_symbol,
                     isInverted: false,
                   ),
-                  const CurrencyCard(
-                    currency: "Bitcoin",
-                    amount: "1 025",
-                    code: "BTC",
-                    icon: Icons.currency_bitcoin,
-                    isInverted: true,
+                  Transform.translate(
+                    offset: const Offset(0, -25),
+                    child: const CurrencyCard(
+                      currency: "Bitcoin",
+                      amount: "1 025",
+                      code: "BTC",
+                      icon: Icons.currency_bitcoin,
+                      isInverted: true,
+                    ),
                   ),
-                  const CurrencyCard(
-                    currency: "Dollar",
-                    amount: "9 724",
-                    code: "USD",
-                    icon: Icons.attach_money_outlined,
-                    isInverted: false,
+                  Transform.translate(
+                    offset: const Offset(0, -50),
+                    child: const CurrencyCard(
+                      currency: "Dollar",
+                      amount: "9 724",
+                      code: "USD",
+                      icon: Icons.attach_money_outlined,
+                      isInverted: false,
+                    ),
                   ),
                 ],
               ),
