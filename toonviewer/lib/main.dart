@@ -129,7 +129,7 @@ class App extends StatelessWidget {
                               "Euro",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 35,
+                                fontSize: 30,
                               ),
                             ),
                             const SizedBox(
@@ -141,7 +141,7 @@ class App extends StatelessWidget {
                                   "6 428",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 25,
+                                    fontSize: 20,
                                   ),
                                 ),
                                 SizedBox(
@@ -151,12 +151,24 @@ class App extends StatelessWidget {
                                   "EUR",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 25,
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 20,
                                   ),
                                 ),
                               ],
                             ),
                           ],
+                        ),
+                        Transform.scale(
+                          scale: 2,
+                          child: Transform.translate(
+                            offset: const Offset(10, 7),
+                            child: const Icon(
+                              Icons.euro_symbol,
+                              color: Colors.white,
+                              size: 100,
+                            ),
+                          ),
                         ),
                       ],
                     ),
