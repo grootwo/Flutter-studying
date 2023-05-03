@@ -1,38 +1,50 @@
 import 'package:flutter/material.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
-
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
+void main() {
+  runApp(const App());
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class App extends StatefulWidget {
+  const App({super.key});
+
+  @override
+  State<App> createState() => _ApptState();
+}
+
+class _ApptState extends State<App> {
   int counter = 0;
   void onclicked() {}
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          const Text(
-            "Counter",
-            style: TextStyle(
-              color: Colors.black,
-            ),
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: const Color(0x00fe4829),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Counter",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 50,
+                ),
+              ),
+              Text(
+                "$counter",
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 50,
+                ),
+              ),
+              IconButton(
+                onPressed: onclicked,
+                icon: const Icon(Icons.plus_one_rounded),
+              ),
+            ],
           ),
-          Text(
-            "$counter",
-            style: const TextStyle(
-              color: Colors.black,
-            ),
-          ),
-          IconButton(
-            onPressed: onclicked,
-            icon: const Icon(Icons.plus_one_rounded),
-          ),
-        ],
+        ),
       ),
     );
   }
