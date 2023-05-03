@@ -13,7 +13,11 @@ class App extends StatefulWidget {
 
 class _ApptState extends State<App> {
   int counter = 0;
-  void onclicked() {}
+  void onclicked() {
+    setState(() {
+      counter = counter + 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
