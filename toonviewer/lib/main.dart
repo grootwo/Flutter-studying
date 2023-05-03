@@ -23,7 +23,7 @@ class _ApptState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: const Color(0x00fe4829),
+        backgroundColor: Colors.lightBlue,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -31,20 +31,24 @@ class _ApptState extends State<App> {
               const Text(
                 "Counter",
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 50,
                 ),
               ),
               Text(
                 "$counter",
                 style: const TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 50,
                 ),
               ),
               IconButton(
                 onPressed: onclicked,
-                icon: const Icon(Icons.plus_one_rounded),
+                iconSize: 50,
+                color: Colors.yellow,
+                icon: const Icon(
+                  Icons.plus_one_rounded,
+                ),
               ),
             ],
           ),
