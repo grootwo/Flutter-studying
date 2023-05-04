@@ -36,7 +36,7 @@ class _ApptState extends State<App> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              myTitle(),
+              MyTitle(),
             ],
           ),
         ),
@@ -45,11 +45,16 @@ class _ApptState extends State<App> {
   }
 }
 
-class myTitle extends StatelessWidget {
-  const myTitle({
+class MyTitle extends StatefulWidget {
+  const MyTitle({
     super.key,
   });
 
+  @override
+  State<MyTitle> createState() => _MyTitleState();
+}
+
+class _MyTitleState extends State<MyTitle> {
   @override
   Widget build(BuildContext context) {
     return Text(
