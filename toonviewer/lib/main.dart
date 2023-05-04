@@ -12,6 +12,14 @@ class App extends StatefulWidget {
 }
 
 class _ApptState extends State<App> {
+  bool show = true;
+
+  void toggleTitle() {
+    setState(() {
+      show = !show;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,8 +36,16 @@ class _ApptState extends State<App> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              MyTitle(),
+            children: [
+              show ? const MyTitle() : const Text(""),
+              IconButton(
+                onPressed: toggleTitle,
+                icon: const Icon(
+                  Icons.ads_click,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  size: 50,
+                ),
+              ),
             ],
           ),
         ),
@@ -52,6 +68,12 @@ class _MyTitleState extends State<MyTitle> {
   void initState() {
     super.initState();
     print("init");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("dispose");
   }
 
   @override
