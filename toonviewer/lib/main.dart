@@ -23,14 +23,15 @@ class _ApptState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           titleMedium: TextStyle(
-            color: Colors.green[300],
+            color: Color.fromARGB(255, 0, 179, 9),
+            fontSize: 40,
           ),
         ),
       ),
       home: Scaffold(
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: const Color.fromARGB(255, 244, 208, 3),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -51,6 +52,12 @@ class myTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('This is my TITLE!');
+    return Text(
+      'This is my TITLE!',
+      style: TextStyle(
+        color: Theme.of(context).textTheme.titleMedium?.color,
+        fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+      ),
+    );
   }
 }
