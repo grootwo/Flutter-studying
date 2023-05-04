@@ -22,6 +22,13 @@ class _ApptState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        textTheme: TextTheme(
+          titleMedium: TextStyle(
+            color: Colors.green[300],
+          ),
+        ),
+      ),
       home: Scaffold(
         backgroundColor: Colors.lightBlue,
         body: Center(
