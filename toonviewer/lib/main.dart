@@ -27,39 +27,23 @@ class _ApptState extends State<App> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Counter",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 50,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  for (var num in numList)
-                    Text(
-                      "$num",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                      ),
-                    ),
-                ],
-              ),
-              IconButton(
-                onPressed: onclicked,
-                iconSize: 50,
-                color: Colors.yellow,
-                icon: const Icon(
-                  Icons.add_circle,
-                ),
-              ),
+            children: const [
+              myTitle(),
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class myTitle extends StatelessWidget {
+  const myTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('This is my TITLE!');
   }
 }
