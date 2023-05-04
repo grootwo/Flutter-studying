@@ -12,13 +12,6 @@ class App extends StatefulWidget {
 }
 
 class _ApptState extends State<App> {
-  List<num> numList = [];
-  void onclicked() {
-    setState(() {
-      numList.add(numList.length);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -56,7 +49,14 @@ class MyTitle extends StatefulWidget {
 
 class _MyTitleState extends State<MyTitle> {
   @override
+  void initState() {
+    super.initState();
+    print("init");
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print("build");
     return Text(
       'This is my TITLE!',
       style: TextStyle(
