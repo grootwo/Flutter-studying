@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Flexible(
-              flex: 1,
+              flex: 2,
               child: Center(
                 child: IconButton(
                   iconSize: 120,
