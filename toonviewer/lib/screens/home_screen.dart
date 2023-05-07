@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Text(
-                        '0',
+                        '$totalPomodoros',
                         style: TextStyle(
                           color:
                               Theme.of(context).textTheme.displayLarge?.color,
