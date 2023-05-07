@@ -48,6 +48,14 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onRestartPressed() {
+    timer.cancel();
+    setState(() {
+      totalTime = twentyFiveMin;
+      isRunning = false;
+    });
+  }
+
   String timeFormat(int seconds) {
     String duration = Duration(seconds: seconds).toString();
     return duration.substring(2, 7);
@@ -94,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       iconSize: 60,
                       color: Theme.of(context).cardColor,
                       icon: const Icon(Icons.stop_circle_outlined),
-                      onPressed: isRunning ? onPausePressd : onStartPressed,
+                      onPressed: onRestartPressed,
                     ),
                   ],
                 ),
