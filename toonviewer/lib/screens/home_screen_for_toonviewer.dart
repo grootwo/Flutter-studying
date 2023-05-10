@@ -28,7 +28,9 @@ class HomeScreen extends StatelessWidget {
           if (snapshot.hasData) {
             return const Text('Webtoons are ready!');
           }
-          return const Text('Loading..');
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
