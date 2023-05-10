@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<WebtoonModel> webtoons = [];
-  bool isLoading = false;
+  bool isLoading = true;
 
   void loadWebtoons() async {
     webtoons = await ApiService().getTodayToons();
