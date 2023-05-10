@@ -8,7 +8,7 @@ class ApiService {
     final url = Uri.parse("$baseUri/$today");
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      print(response);
+      print(response.body);
       return;
     }
     throw Error();
