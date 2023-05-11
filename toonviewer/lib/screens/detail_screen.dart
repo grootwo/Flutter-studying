@@ -20,9 +20,9 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 5,
         toolbarHeight: 60.0,
-        title: const Text(
-          "Today's webtoon",
-          style: TextStyle(
+        title: Text(
+          title,
+          style: const TextStyle(
             fontSize: 23,
           ),
         ),
