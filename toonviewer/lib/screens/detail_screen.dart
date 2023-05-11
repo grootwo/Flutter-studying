@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:toonviewer/screens/detail_screen.dart';
 
-class Webtoon extends StatelessWidget {
+class DetailScreen extends StatelessWidget {
   final String title;
   final String thumb;
   final String id;
 
-  const Webtoon({
+  const DetailScreen({
     super.key,
     required this.title,
     required this.thumb,
@@ -15,19 +14,20 @@ class Webtoon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DetailScreen(
-                title: title,
-                thumb: thumb,
-                id: id,
-              ),
-            ));
-      },
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+        elevation: 5,
+        toolbarHeight: 60.0,
+        title: const Text(
+          "Today's webtoon",
+          style: TextStyle(
+            fontSize: 23,
+          ),
+        ),
+      ),
+      body: Column(
         children: [
           Container(
             width: 250,
