@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:toonviewer/models/webtoon_model.dart';
+import 'package:toonviewer/models/webtoon_detail_model.dart';
 
 class ApiService {
   String baseUri = "https://webtoon-crawler.nomadcoders.workers.dev";
@@ -17,6 +18,16 @@ class ApiService {
         webtoons.add(WebtoonModel.fromJson(webtoon));
       }
       return webtoons;
+    }
+    throw Error();
+  }
+
+  Future<WebtoonDetailModel> getWebtoonById(String id) async {
+    final url = Uri.parse("$baseUri/$id");
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final webtoon = jsonDecode(response.body);
+      return WebtoonDetailModel.fromJson(webtoon);
     }
     throw Error();
   }
