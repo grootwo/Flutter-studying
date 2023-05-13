@@ -1,5 +1,6 @@
 class MovieModel {
-  final String id, title, poster_path;
+  final int id;
+  final String title, poster_path;
   MovieModel.fromJson(Map<String, dynamic> json)
       : id = json["id"],
         title = json["title"],
