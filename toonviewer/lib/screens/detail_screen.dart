@@ -137,13 +137,20 @@ class _DetailScreenState extends State<DetailScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    episode.title,
-                                    style: const TextStyle(
-                                      fontSize: 20,
+                                  Flexible(
+                                    flex: 6,
+                                    child: Text(
+                                      episode.title,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                      ),
                                     ),
                                   ),
-                                  const Icon(Icons.arrow_forward_rounded),
+                                  const Flexible(
+                                    flex: 1,
+                                    child: Icon(Icons.arrow_forward_rounded),
+                                  ),
                                 ],
                               ),
                             ),
