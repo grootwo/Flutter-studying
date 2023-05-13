@@ -112,6 +112,27 @@ class _DetailScreenState extends State<DetailScreen> {
               }
             },
           ),
+          FutureBuilder(
+            future: episodes,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Column(
+                  children: [
+                    for (var episode in snapshot.data!)
+                      Container(
+                        child: Row(
+                          children: [
+                            Text(episode.title),
+                            const Icon(Icons.arrow_forward_rounded),
+                          ],
+                        ),
+                      )
+                  ],
+                );
+              }
+              return Container();
+            },
+          )
         ],
       ),
     );
