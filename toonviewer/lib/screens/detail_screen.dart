@@ -45,95 +45,118 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 50,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30,
+            vertical: 40,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(
             children: [
-              Hero(
-                tag: widget.id,
-                child: Container(
-                  width: 250,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          blurRadius: 10.0,
-                          offset: const Offset(5, 5),
-                        ),
-                      ]),
-                  child: Image.network(
-                    widget.thumb,
-                    headers: const {
-                      "User-Agent":
-                          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-                    },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Hero(
+                    tag: widget.id,
+                    child: Container(
+                      width: 250,
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.4),
+                              blurRadius: 10.0,
+                              offset: const Offset(5, 5),
+                            ),
+                          ]),
+                      child: Image.network(
+                        widget.thumb,
+                        headers: const {
+                          "User-Agent":
+                              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+                        },
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
+              FutureBuilder(
+                future: webtoon,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: [
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Text(
+                          '${snapshot.data!.genre} | ${snapshot.data!.age}',
+                          style: const TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          snapshot.data!.about,
+                          style: const TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return const Text('...');
+                  }
+                },
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              FutureBuilder(
+                future: episodes,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: [
+                        for (var episode in snapshot.data!)
+                          Container(
+                            decoration: const BoxDecoration(
+                              border: Border(
+                                top: BorderSide(),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 25,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    episode.title,
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  const Icon(Icons.arrow_forward_rounded),
+                                ],
+                              ),
+                            ),
+                          )
+                      ],
+                    );
+                  }
+                  return Container();
+                },
+              )
             ],
           ),
-          FutureBuilder(
-            future: webtoon,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 30,
-                    horizontal: 30,
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        '${snapshot.data!.genre} | ${snapshot.data!.age}',
-                        style: const TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        snapshot.data!.about,
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              } else {
-                return const Text('...');
-              }
-            },
-          ),
-          FutureBuilder(
-            future: episodes,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Column(
-                  children: [
-                    for (var episode in snapshot.data!)
-                      Container(
-                        child: Row(
-                          children: [
-                            Text(episode.title),
-                            const Icon(Icons.arrow_forward_rounded),
-                          ],
-                        ),
-                      )
-                  ],
-                );
-              }
-              return Container();
-            },
-          )
-        ],
+        ),
       ),
     );
   }
