@@ -16,92 +16,105 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 100,
-            ),
-            Row(
-              children: const [
-                Text(
-                  'Popular Movies',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
-            FutureBuilder(
-              future: popularMovies,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Expanded(
-                    child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          var movie = snapshot.data![index];
-                          return Column(
-                            children: [
-                              Container(
-                                width: 200,
-                                height: 300,
-                                clipBehavior: Clip.hardEdge,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.4),
-                                        blurRadius: 10.0,
-                                        offset: const Offset(5, 5),
-                                      ),
-                                    ]),
-                                child: Image.network(
-                                  'https://image.tmdb.org/t/p/w500/${movie.poster_path}',
-                                  fit: BoxFit.cover,
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 100,
+          ),
+          CategoryTitle(
+            title: 'Popular Movies',
+          ),
+          FutureBuilder(
+            future: popularMovies,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Expanded(
+                  child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        var movie = snapshot.data![index];
+                        return Column(
+                          children: [
+                            Container(
+                              width: 200,
+                              height: 300,
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.4),
+                                    blurRadius: 10.0,
+                                    offset: const Offset(5, 5),
+                                  ),
+                                ],
+                              ),
+                              child: Image.network(
+                                'https://image.tmdb.org/t/p/w500/${movie.poster_path}',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              width: 200,
+                              child: Text(
+                                movie.title,
+                                style: TextStyle(
+                                  fontSize: 20,
                                 ),
                               ),
-                              Text(movie.title),
-                            ],
-                          );
-                        },
-                        separatorBuilder: (context, index) {
-                          return Container(
-                            width: 40,
-                          );
-                        },
-                        itemCount: snapshot.data!.length),
-                  );
-                }
-                return Container();
-              },
+                            ),
+                          ],
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return Container(
+                          width: 40,
+                        );
+                      },
+                      itemCount: snapshot.data!.length),
+                );
+              }
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            },
+          ),
+          CategoryTitle(
+            title: 'Now in Cinemas',
+          ),
+          CategoryTitle(
+            title: 'Coming Soon',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CategoryTitle extends StatelessWidget {
+  final String title;
+  const CategoryTitle({
+    super.key,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Row(
+        children: [
+          Text(
+            '$title',
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.w700,
             ),
-            Row(
-              children: const [
-                Text(
-                  'Now in Cinemas',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: const [
-                Text(
-                  'Coming Soon',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
