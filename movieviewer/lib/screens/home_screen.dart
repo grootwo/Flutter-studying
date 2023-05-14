@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late Future<List<MovieModel>> popularMovies = ApiService().getPopularMovies();
   late Future<List<MovieModel>> playingMovies = ApiService().getPlayingMovies();
+  late Future<List<MovieModel>> comingMovies = ApiService().getComingMovies();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           const SizedBox(
-            height: 100,
+            height: 80,
           ),
           CategoryTitle(
             title: 'Popular Movies',
@@ -87,6 +88,34 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           CategoryTitle(
             title: 'Coming Soon',
+          ),
+          FutureBuilder(
+            future: comingMovies,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Expanded(
+                  child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        var movie = snapshot.data![index];
+                        return MovieWidget(
+                          id: movie.id,
+                          poster_path: movie.poster_path,
+                          title: movie.title,
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return Container(
+                          width: 40,
+                        );
+                      },
+                      itemCount: snapshot.data!.length),
+                );
+              }
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            },
           ),
         ],
       ),
