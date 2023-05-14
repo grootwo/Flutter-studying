@@ -33,6 +33,19 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        foregroundColor: Colors.black,
+        backgroundColor: Color.fromARGB(0, 255, 255, 255),
+        shadowColor: Color.fromARGB(0, 255, 255, 255),
+        elevation: 5,
+        toolbarHeight: 60.0,
+        title: Text(
+          'Back to list',
+          style: const TextStyle(
+            fontSize: 23,
+          ),
+        ),
+      ),
       body: Column(children: [
         Text(
           widget.title,
