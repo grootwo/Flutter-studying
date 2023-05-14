@@ -46,14 +46,34 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ),
       ),
-      body: Column(children: [
-        Text(
-          widget.title,
-          style: TextStyle(
-            fontSize: 50,
-          ),
-        )
-      ]),
+      body: FutureBuilder(
+        future: movie,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Column(
+                children: [
+                  Text(
+                    widget.title,
+                    style: TextStyle(
+                      fontSize: 50,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      // for (var genre in snapshot.data!.genres) Text(genre),
+                      Text('${snapshot.data!.vote_average}'),
+                    ],
+                  ),
+                  Text(snapshot.data!.overview),
+                ],
+              ),
+            );
+          }
+          return CircularProgressIndicator();
+        },
+      ),
     );
   }
 }
