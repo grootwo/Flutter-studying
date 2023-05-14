@@ -23,6 +23,21 @@ class ApiService {
     throw Error();
   }
 
+  Future<List<MovieModel>> getPlayingMovies() async {
+    List<MovieModel> movies = [];
+    final url = Uri.parse("$baseUrl/now-playing");
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> jsonCode = jsonDecode(response.body);
+      final List<dynamic> jsonCodeResults = jsonCode["results"];
+      for (var movie in jsonCodeResults) {
+        movies.add(MovieModel.fromJson(movie));
+      }
+      return movies;
+    }
+    throw Error();
+  }
+
   Future<MovieDetailModel> getMovieById(int id) async {
     final url =
         Uri.parse("https://movies-api.nomadcoders.workers.dev/movie?id=${id}");

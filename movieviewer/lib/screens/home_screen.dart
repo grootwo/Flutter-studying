@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<List<MovieModel>> popularMovies = ApiService().getPopularMovies();
+  late Future<List<MovieModel>> playingMovies = ApiService().getPlayingMovies();
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +56,34 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           CategoryTitle(
             title: 'Now in Cinemas',
+          ),
+          FutureBuilder(
+            future: playingMovies,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Expanded(
+                  child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        var movie = snapshot.data![index];
+                        return MovieWidget(
+                          id: movie.id,
+                          poster_path: movie.poster_path,
+                          title: movie.title,
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return Container(
+                          width: 40,
+                        );
+                      },
+                      itemCount: snapshot.data!.length),
+                );
+              }
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            },
           ),
           CategoryTitle(
             title: 'Coming Soon',
