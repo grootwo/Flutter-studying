@@ -38,7 +38,24 @@ class _HomeScreenState extends State<HomeScreen> {
               future: popularMovies,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return const Text('Movies are ready!');
+                  return Expanded(
+                    child: ListView.separated(
+                        itemBuilder: (context, index) {
+                          var movie = snapshot.data![index];
+                          return Column(
+                            children: [
+                              Container(),
+                              Text('$movie.title'),
+                            ],
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return Container(
+                            width: 40,
+                          );
+                        },
+                        itemCount: snapshot.data!.length),
+                  );
                 }
                 return Container();
               },
