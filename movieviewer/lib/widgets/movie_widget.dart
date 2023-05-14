@@ -33,8 +33,8 @@ class MovieWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: 200,
-            height: 300,
+            width: 150,
+            height: 170,
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
@@ -55,11 +55,12 @@ class MovieWidget extends StatelessWidget {
             height: 10,
           ),
           Container(
-            width: 200,
+            width: 150,
             child: Text(
               title,
               style: TextStyle(
                 fontSize: 20,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ),
