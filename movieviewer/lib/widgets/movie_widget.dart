@@ -20,15 +20,15 @@ class MovieWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-              fullscreenDialog: true,
-              builder: (context) => DetailScreen(
-                title: title,
-                poster_path: poster_path,
-                id: id,
-              ),
-            ));
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(
+              title: title,
+              poster_path: poster_path,
+              id: id,
+            ),
+          ),
+        );
       },
       child: Column(
         children: [
