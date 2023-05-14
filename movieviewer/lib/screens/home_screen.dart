@@ -40,12 +40,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (snapshot.hasData) {
                   return Expanded(
                     child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           var movie = snapshot.data![index];
                           return Column(
                             children: [
-                              Container(),
-                              Text('$movie.title'),
+                              Container(
+                                width: 200,
+                                height: 300,
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.4),
+                                        blurRadius: 10.0,
+                                        offset: const Offset(5, 5),
+                                      ),
+                                    ]),
+                                child: Image.network(
+                                  'https://image.tmdb.org/t/p/w500/${movie.poster_path}',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Text(movie.title),
                             ],
                           );
                         },
