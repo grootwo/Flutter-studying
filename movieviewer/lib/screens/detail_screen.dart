@@ -53,6 +53,7 @@ class _DetailScreenState extends State<DetailScreen> {
             return Padding(
               padding: const EdgeInsets.all(25.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     width: 200,
@@ -70,19 +71,43 @@ class _DetailScreenState extends State<DetailScreen> {
                     child: Image.network(
                         'https://image.tmdb.org/t/p/w500/${widget.poster_path}'),
                   ),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Text(
                     widget.title,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 50,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       // for (var genre in snapshot.data!.genres) Text(genre),
-                      Text('${snapshot.data!.vote_average}'),
+                      Text(
+                        '${snapshot.data!.vote_average}',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
                     ],
                   ),
-                  Text(snapshot.data!.overview),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Text(
+                    snapshot.data!.overview,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
                 ],
               ),
             );
