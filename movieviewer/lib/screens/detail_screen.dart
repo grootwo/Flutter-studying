@@ -54,6 +54,22 @@ class _DetailScreenState extends State<DetailScreen> {
               padding: const EdgeInsets.all(25.0),
               child: Column(
                 children: [
+                  Container(
+                    width: 200,
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          blurRadius: 10.0,
+                          offset: const Offset(5, 5),
+                        ),
+                      ],
+                    ),
+                    child: Image.network(
+                        'https://image.tmdb.org/t/p/w500/${widget.poster_path}'),
+                  ),
                   Text(
                     widget.title,
                     style: TextStyle(
@@ -71,7 +87,9 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
             );
           }
-          return CircularProgressIndicator();
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
