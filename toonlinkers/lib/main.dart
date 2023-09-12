@@ -11,13 +11,14 @@ class App extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Hello World!'),
+          backgroundColor: Color.fromARGB(255, 0, 0, 0),
         ),
         body: Center(
           child: Text('Hello flutter!',
             style: TextStyle(
             fontSize: 30,
+            ),
           ),
-        ),
         )
       ),
     );
