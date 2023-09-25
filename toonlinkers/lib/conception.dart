@@ -37,4 +37,7 @@ void main() {
   // do something, go to api
   lately = 'hallo';
   // lately = 'hallo later';
+
+  // constant is known while compile time
+  const anExample = 'http://something';
 }
