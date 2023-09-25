@@ -31,4 +31,10 @@ void main() {
 
   // final var won't be changed
   final lastVar = 'This is final definition';
+
+  // late var can be assigned later, but can be used after assignment
+  late final String lately;
+  // do something, go to api
+  lately = 'hallo';
+  // lately = 'hallo later';
 }
