@@ -20,4 +20,12 @@ void main() {
   if (something is int) {
     print(something.isOdd);
   }
+
+  // nullable can be possible with ?
+  String greeting = 'hello';
+  // greeting = null;
+  String? nullGreeting = 'hello';
+  nullGreeting = null;
+  // if nullGreeting is not null, do next
+  nullGreeting?.isEmpty;
 }
