@@ -28,4 +28,7 @@ void main() {
   nullGreeting = null;
   // if nullGreeting is not null, do next
   nullGreeting?.isEmpty;
+
+  // final var won't be changed
+  final lastVar = 'This is final definition';
 }
