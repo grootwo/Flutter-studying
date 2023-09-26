@@ -7,7 +7,7 @@ void main() {
   animal = 'a dog';
   // inside of class, use specific type
   String name = 'a cat';
-  name = 'a dog'; 
+  name = 'a dog';
 
   // something is dynamic type
   var something;
@@ -40,4 +40,22 @@ void main() {
 
   // constant is known while compile time
   const anExample = 'http://something';
+
+  // list
+  var check = true;
+  var nums = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    if (check) 5,
+  ];
+  List<String> strs = [
+    'abc',
+    'bcd',
+    'cde',
+  ];
+  print(nums.last);
+  print(strs.isNotEmpty);
 }
