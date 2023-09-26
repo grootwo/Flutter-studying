@@ -98,4 +98,10 @@ void main() {
       4: 4,
     }
   ];
+
+  // all items in sets are unique
+  Set<int> uniqueNums = {1, 2, 3, 4};
+  uniqueNums.add(1);
+  uniqueNums.add(1);
+  print(uniqueNums);
 }
