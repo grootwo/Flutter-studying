@@ -64,4 +64,16 @@ void main() {
   var count = 0;
   var sentence = '\'hallo means $meaning, and you can say ${count + 1}\'';
   print(sentence);
+
+  // collection for
+  var cuteAnimals = [
+    'cat',
+    'dog',
+  ];
+  var coolAnimals = [
+    'koala',
+    'kangaroo',
+    'squirrel',
+    for (var animal in cuteAnimals) '$animal 🥳',
+  ];
 }
