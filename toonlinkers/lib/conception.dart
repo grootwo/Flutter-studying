@@ -58,4 +58,10 @@ void main() {
   ];
   print(nums.last);
   print(strs.isNotEmpty);
+
+  // string interpolation
+  var meaning = '안녕';
+  var count = 0;
+  var sentence = '\'hallo means $meaning, and you can say ${count + 1}\'';
+  print(sentence);
 }
