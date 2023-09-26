@@ -76,4 +76,26 @@ void main() {
     'squirrel',
     for (var animal in cuteAnimals) '$animal 🥳',
   ];
+
+  // map
+  var gardener = {
+    'name': 'Hoho',
+    'hp': 100,
+    'experience': 'a lot',
+  };
+  Map<List<int>, String> numbers = {
+    [1]: 'one',
+    [2, 2]: 'two',
+  };
+  print(numbers.keys);
+  List<Map<int, int>> intList = [
+    {
+      1: 1,
+      2: 2,
+    },
+    {
+      3: 3,
+      4: 4,
+    }
+  ];
 }
