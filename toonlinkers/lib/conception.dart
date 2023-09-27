@@ -1,6 +1,6 @@
-String makeIntro(String name, int age, [String? major = 'unknown']) =>
-    'name: $name, age: $age, major: $major';
+String makeUpper(String? str) => str != null ? str.toUpperCase() : 'UNKNOWN';
 
 void main() {
-  print(makeIntro('hola', 30));
+  makeUpper('hallo');
+  makeUpper(null);
 }
