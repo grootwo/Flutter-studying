@@ -1,10 +1,11 @@
-String makeUpper(String? str) => str?.toUpperCase() ?? 'UNKNWON';
+typedef intList = List<int>;
+
+intList reverseIntList(intList list) {
+  var reversed = list.reversed;
+  return reversed.toList();
+}
 
 void main() {
-  makeUpper('hallo');
-  makeUpper(null);
-  String? check;
-  // if check is null, put following value
-  check ??= 'nullable';
-  check ??= 'another value';
+  var someIntList = [0, 1, 2];
+  someIntList = reverseIntList(someIntList);
 }
