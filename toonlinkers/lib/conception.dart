@@ -1,7 +1,7 @@
 String makeIntro({
-  String name = 'anon',
-  int age = 0,
-  String major = 'unknown',
+  required String name,
+  required int age,
+  required String major,
 }) {
   return 'name: $name, age: $age, major: $major';
 }
@@ -12,4 +12,5 @@ void main() {
     major: 'computer science',
     age: 30,
   ));
+  // makeIntro();
 }
