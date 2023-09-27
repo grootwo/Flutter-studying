@@ -1,11 +1,14 @@
-typedef intList = List<int>;
+class Cat {
+  String color = 'cheese';
+  final String state = 'healty';
 
-intList reverseIntList(intList list) {
-  var reversed = list.reversed;
-  return reversed.toList();
+  void meow() {
+    print('meow $color cat! I\'m $state');
+  }
 }
 
 void main() {
-  var someIntList = [0, 1, 2];
-  someIntList = reverseIntList(someIntList);
+  Cat someCat = Cat();
+  someCat.color = 'blak and white';
+  someCat.meow();
 }
