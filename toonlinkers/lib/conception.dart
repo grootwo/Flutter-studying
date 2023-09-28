@@ -5,27 +5,34 @@ enum Color {
   black,
 }
 
-abstract class Animal {
-  void breath();
+class Animal {
+  late String type;
+
+  Animal({required this.type});
+
+  void breath() {
+    print('I\'m breathing..');
+  }
 }
 
 class Cat extends Animal {
   String state;
   Color color;
-  int age;
 
   Cat({
     required this.color,
     required this.state,
-    required this.age,
-  });
+    required type,
+  }) : super(type: type);
 
+  @override
   void breath() {
-    print('breathing..');
+    super.breath();
+    print('I\'m breathing again..');
   }
 
   void meow() {
-    print('meow $color cat! I\'m $state and $age');
+    print('meow $color cat! I\'m $state.');
   }
 }
 
@@ -33,10 +40,8 @@ void main() {
   Cat cat0 = Cat(
     color: Color.gray,
     state: 'healthy',
-    age: 15,
-  )
-    ..color = Color.tabby
-    ..state = 'okay'
-    ..meow()
-    ..breath();
+    type: 'cat',
+  );
+  cat0.breath();
+  cat0.meow();
 }
