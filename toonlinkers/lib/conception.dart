@@ -5,6 +5,18 @@ enum Color {
   black,
 }
 
+mixin Agile {
+  void crawl() {
+    print('Crawling..');
+  }
+}
+
+mixin Cute {
+  void sayCute() {
+    print('I\'m cute..');
+  }
+}
+
 class Animal {
   late String type;
 
@@ -15,7 +27,7 @@ class Animal {
   }
 }
 
-class Cat extends Animal {
+class Cat extends Animal with Cute, Agile {
   String state;
   Color color;
 
@@ -36,6 +48,8 @@ class Cat extends Animal {
   }
 }
 
+class Dog with Cute, Agile {}
+
 void main() {
   Cat cat0 = Cat(
     color: Color.gray,
@@ -44,4 +58,7 @@ void main() {
   );
   cat0.breath();
   cat0.meow();
+  cat0.crawl();
+  Dog dog0 = Dog();
+  dog0.sayCute();
 }
