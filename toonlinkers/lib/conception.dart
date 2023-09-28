@@ -8,20 +8,6 @@ class Cat {
     required this.age,
   });
 
-  Cat.createCheese({
-    required String state,
-    required int age,
-  })  : this.state = state,
-        this.age = age,
-        this.color = 'cheese';
-
-  Cat.createTabby({
-    required String state,
-    required int age,
-  })  : this.state = state,
-        this.age = age,
-        this.color = 'tabby';
-
   void meow() {
     print('meow $color cat! I\'m $state and $age');
   }
@@ -33,15 +19,11 @@ void main() {
     state: 'healthy',
     age: 15,
   );
-  Cat cat1 = Cat.createCheese(
-    state: 'healthy',
-    age: 15,
-  );
-  Cat cat2 = Cat.createTabby(
-    state: 'healthy',
-    age: 6,
-  );
-  cat0.meow();
-  cat1.meow();
-  cat2.meow();
+  var something = cat0
+    ..color = 'tabby'
+    ..state = 'okay'
+    ..meow();
+  // cat0.color = 'tabby';
+  // cat0.state = 'okay';
+  // cat0.meow();
 }
