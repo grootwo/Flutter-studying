@@ -1,5 +1,13 @@
+enum Color {
+  cheese,
+  tabby,
+  gray,
+  black,
+}
+
 class Cat {
-  String color, state;
+  String state;
+  Color color;
   int age;
 
   Cat({
@@ -15,15 +23,11 @@ class Cat {
 
 void main() {
   Cat cat0 = Cat(
-    color: 'gray',
+    color: Color.gray,
     state: 'healthy',
     age: 15,
-  );
-  var something = cat0
-    ..color = 'tabby'
+  )
+    ..color = Color.tabby
     ..state = 'okay'
     ..meow();
-  // cat0.color = 'tabby';
-  // cat0.state = 'okay';
-  // cat0.meow();
 }
