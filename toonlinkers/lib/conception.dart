@@ -5,7 +5,11 @@ enum Color {
   black,
 }
 
-class Cat {
+abstract class Animal {
+  void breath();
+}
+
+class Cat extends Animal {
   String state;
   Color color;
   int age;
@@ -15,6 +19,10 @@ class Cat {
     required this.state,
     required this.age,
   });
+
+  void breath() {
+    print('breathing..');
+  }
 
   void meow() {
     print('meow $color cat! I\'m $state and $age');
@@ -29,5 +37,6 @@ void main() {
   )
     ..color = Color.tabby
     ..state = 'okay'
-    ..meow();
+    ..meow()
+    ..breath();
 }
