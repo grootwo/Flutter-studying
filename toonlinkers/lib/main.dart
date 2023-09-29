@@ -5,19 +5,21 @@ void main() {
 }
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFF181818),
+        backgroundColor: const Color(0xFF181818),
         body: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: 25,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Row(
@@ -26,14 +28,14 @@ class App extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
+                      const Text(
                         'Hey, Hwido',
                         style: TextStyle(
                           fontSize: 35,
                           color: Colors.white,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -47,20 +49,20 @@ class App extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              Text(
+              const Text(
                 'Total Balance',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 '\$5 194 382',
                 style: TextStyle(
                   color: Colors.white,
@@ -68,7 +70,7 @@ class App extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -76,7 +78,7 @@ class App extends StatelessWidget {
                   color: Colors.amber,
                   borderRadius: BorderRadius.circular(45),
                 ),
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 30,
                     vertical: 20,
