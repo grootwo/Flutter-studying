@@ -9,7 +9,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: Color(0xFF181818),
         body: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 25,
@@ -36,7 +36,7 @@ class App extends StatelessWidget {
                         'Welcome back',
                         style: TextStyle(
                           fontSize: 20,
-                          color: Colors.white,
+                          color: Colors.white.withOpacity(0.8),
                         ),
                       ),
                     ],
