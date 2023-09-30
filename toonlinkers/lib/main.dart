@@ -148,6 +148,9 @@ class App extends StatelessWidget {
                                   fontSize: 20,
                                 ),
                               ),
+                              SizedBox(
+                                width: 10,
+                              ),
                               Text(
                                 'EUR',
                                 style: TextStyle(
