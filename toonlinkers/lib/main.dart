@@ -84,7 +84,7 @@ class App extends StatelessWidget {
                   ),
                   Button(
                     text: 'Request',
-                    bgColor: Color(0xFF1F2123),
+                    bgColor: Color.fromARGB(255, 69, 69, 69),
                     textColor: Colors.white,
                   ),
                 ],
@@ -117,16 +117,18 @@ class App extends StatelessWidget {
                 height: 20,
               ),
               Container(
+                clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 118, 118, 118),
+                  color: const Color.fromARGB(255, 69, 69, 69),
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -162,13 +164,20 @@ class App extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Text(
-                        'Euro',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
+                      Transform.scale(
+                        scale: 2.1,
+                        child: Transform.translate(
+                          offset: const Offset(
+                            -5,
+                            15,
+                          ),
+                          child: const Icon(
+                            Icons.euro_rounded,
+                            color: Colors.white,
+                            size: 90,
+                          ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
