@@ -21,13 +21,13 @@ class Button extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 30,
+          horizontal: 35,
           vertical: 20,
         ),
         child: Text(
           text,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 23,
             color: textColor,
           ),
         ),
