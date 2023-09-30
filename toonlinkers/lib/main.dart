@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toonlinkers/widgets/Button.dart';
+import 'package:toonlinkers/widgets/CurrenyCard.dart';
 
 void main() {
   runApp(const App());
@@ -116,71 +117,25 @@ class App extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 69, 69, 69),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Euro',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '6 428',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'EUR',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Transform.scale(
-                        scale: 2.1,
-                        child: Transform.translate(
-                          offset: const Offset(
-                            -5,
-                            15,
-                          ),
-                          child: const Icon(
-                            Icons.euro_rounded,
-                            color: Colors.white,
-                            size: 90,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+              const CurrencyCard(
+                  currencyType: 'Dollar',
+                  price: '55 622',
+                  currencyTypeShort: 'USD',
+                  currencyIcon: Icons.currency_exchange_rounded,
+                  isInverted: true),
+              const CurrencyCard(
+                currencyType: 'Euro',
+                price: '6 428',
+                currencyTypeShort: 'EUR',
+                currencyIcon: Icons.euro_rounded,
+                isInverted: false,
+              ),
+              const CurrencyCard(
+                currencyType: 'Bitcoin',
+                price: '28 981',
+                currencyTypeShort: 'BTC',
+                currencyIcon: Icons.currency_bitcoin_rounded,
+                isInverted: true,
               ),
             ],
           ),
