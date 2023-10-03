@@ -12,8 +12,31 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  bool check = true;
+
+  void toggleText() {
+    setState(() {
+      check = !check;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('initState');
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    print('dispose');
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('build');
     return MaterialApp(
       theme: ThemeData(
         textTheme: const TextTheme(
@@ -23,13 +46,23 @@ class _AppState extends State<App> {
           ),
         ),
       ),
-      home: const Scaffold(
+      home: Scaffold(
         backgroundColor: Colors.blueGrey,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MyLargeTitle(),
+              check
+                  ? const MyLargeTitle()
+                  : const Text(
+                      'Bye',
+                      style: TextStyle(
+                        fontSize: 60,
+                      ),
+                    ),
+              IconButton(
+                  onPressed: toggleText,
+                  icon: const Icon(Icons.ads_click_rounded)),
             ],
           ),
         ),
