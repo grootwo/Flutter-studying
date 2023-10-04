@@ -15,7 +15,7 @@ class App extends StatelessWidget {
         colorScheme:
             ColorScheme.fromSwatch(backgroundColor: const Color(0xFFE7626C)),
         textTheme: const TextTheme(
-          displayLarge: TextStyle(
+          bodyLarge: TextStyle(
             color: Color(0xFF232B55),
           ),
         ),
