@@ -10,6 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int totalTime = 1500;
+  bool isRunnig = false;
   late Timer timer;
 
   void onTiktok(Timer timer) {
@@ -19,10 +20,20 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void onStartPressed() {
-    Timer.periodic(
+    timer = Timer.periodic(
       const Duration(seconds: 1),
       onTiktok,
     );
+    setState(() {
+      isRunnig = true;
+    });
+  }
+
+  void onPausePressed() {
+    timer.cancel();
+    setState(() {
+      isRunnig = false;
+    });
   }
 
   @override
@@ -51,9 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
               alignment: Alignment.center,
               child: IconButton(
                   iconSize: 70,
-                  onPressed: onStartPressed,
+                  onPressed: isRunnig ? onPausePressed : onStartPressed,
                   icon: Icon(
-                    Icons.play_circle_fill_rounded,
+                    isRunnig
+                        ? Icons.pause_circle_filled_rounded
+                        : Icons.play_circle_fill_rounded,
                     color: Theme.of(context).cardColor,
                   )),
             ),
