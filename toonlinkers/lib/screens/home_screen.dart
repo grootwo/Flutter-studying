@@ -47,6 +47,12 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  String timeFormat(int sec) {
+    String result = Duration(seconds: sec).toString().substring(2, 7);
+    print(Duration(seconds: sec).toString());
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                '$totalTime',
+                timeFormat(totalTime),
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 80,
