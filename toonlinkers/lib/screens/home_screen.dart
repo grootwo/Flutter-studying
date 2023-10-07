@@ -9,14 +9,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int totalTime = 1500;
+  static const twentyFiveMin = 10;
+  int totalTime = twentyFiveMin;
   bool isRunnig = false;
+  int totalPomodoros = 0;
   late Timer timer;
 
   void onTiktok(Timer timer) {
-    setState(() {
-      totalTime = totalTime - 1;
-    });
+    if (totalTime == 0) {
+      setState(() {
+        isRunnig = false;
+        timer.cancel();
+        totalTime = twentyFiveMin;
+        totalPomodoros = totalPomodoros + 1;
+      });
+    } else {
+      setState(() {
+        totalTime = totalTime - 1;
+      });
+    }
   }
 
   void onStartPressed() {
@@ -95,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 10,
                         ),
                         Text(
-                          '0',
+                          '$totalPomodoros',
                           style: TextStyle(
                             color: Theme.of(context).textTheme.bodyLarge!.color,
                             fontSize: 50,
