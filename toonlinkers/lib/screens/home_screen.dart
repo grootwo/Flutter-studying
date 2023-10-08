@@ -47,9 +47,16 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onResetPressed() {
+    timer.cancel();
+    setState(() {
+      isRunnig = false;
+      totalTime = twentyFiveMin;
+    });
+  }
+
   String timeFormat(int sec) {
     String result = Duration(seconds: sec).toString().substring(2, 7);
-    print(Duration(seconds: sec).toString());
     return result;
   }
 
