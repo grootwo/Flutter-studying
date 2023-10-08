@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const twentyFiveMin = 10;
+  static const twentyFiveMin = 1500;
   int totalTime = twentyFiveMin;
   bool isRunnig = false;
   int totalPomodoros = 0;
@@ -84,15 +84,33 @@ class _HomeScreenState extends State<HomeScreen> {
             flex: 3,
             child: Container(
               alignment: Alignment.center,
-              child: IconButton(
-                  iconSize: 70,
-                  onPressed: isRunnig ? onPausePressed : onStartPressed,
-                  icon: Icon(
-                    isRunnig
-                        ? Icons.pause_circle_filled_rounded
-                        : Icons.play_circle_fill_rounded,
-                    color: Theme.of(context).cardColor,
-                  )),
+              child: isRunnig
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            iconSize: 70,
+                            onPressed: onPausePressed,
+                            icon: Icon(
+                              Icons.pause_circle_filled_rounded,
+                              color: Theme.of(context).cardColor,
+                            )),
+                        IconButton(
+                          iconSize: 70,
+                          onPressed: onResetPressed,
+                          icon: Icon(Icons.replay_circle_filled_rounded,
+                              color: Theme.of(context).cardColor),
+                        ),
+                      ],
+                    )
+                  : IconButton(
+                      iconSize: 70,
+                      onPressed: onStartPressed,
+                      icon: Icon(
+                        Icons.play_circle_fill_rounded,
+                        color: Theme.of(context).cardColor,
+                      ),
+                    ),
             ),
           ),
           Flexible(
