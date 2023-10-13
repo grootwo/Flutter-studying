@@ -27,9 +27,6 @@ class HomeScreen extends StatelessWidget {
           if (snapshot.hasData) {
             return Column(
               children: [
-                const SizedBox(
-                  height: 100,
-                ),
                 Expanded(
                   child: makeList(snapshot),
                 ),
@@ -47,29 +44,47 @@ class HomeScreen extends StatelessWidget {
 
   ListView makeList(AsyncSnapshot<List<WebtoonModel>> snapshot) {
     return ListView.separated(
-      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(
+        vertical: 20,
+      ),
+      scrollDirection: Axis.vertical,
       itemCount: snapshot.data!.length,
       itemBuilder: (context, index) {
         var webtoon = snapshot.data![index];
         return Column(
           children: [
             Container(
-              width: 100,
-              height: 100,
-              decoration: const BoxDecoration(
-                color: Colors.yellow,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
+              clipBehavior: Clip.hardEdge,
+              width: 260,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(15)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    offset: const Offset(5, 5),
+                    blurRadius: 5,
+                  ),
+                ],
               ),
               child: Image.network(
                 webtoon.thumb,
               ),
             ),
-            Text(webtoon.title),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              webtoon.title,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ],
         );
       },
       separatorBuilder: (context, index) => const SizedBox(
-        width: 30,
+        height: 30,
       ),
     );
   }
