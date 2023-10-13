@@ -60,7 +60,9 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.yellow,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
-              child: Image.network(webtoon.thumb),
+              child: Image.network(
+                webtoon.thumb,
+              ),
             ),
             Text(webtoon.title),
           ],
