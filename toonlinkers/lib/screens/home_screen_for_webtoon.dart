@@ -5,7 +5,7 @@ import 'package:toonlinkers/services/api_service.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  late Future<List<WebtoonModel>> webtoons = ApiService.getTodayWebtoons();
+  final Future<List<WebtoonModel>> webtoons = ApiService.getTodayWebtoons();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,9 @@ class HomeScreen extends StatelessWidget {
           if (snapshot.hasData) {
             return const Text('Here are webtoons!');
           } else {
-            return const Text('Loading...');
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
         },
       ),
