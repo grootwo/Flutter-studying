@@ -25,7 +25,16 @@ class HomeScreen extends StatelessWidget {
         future: webtoons,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return makeList(snapshot);
+            return Column(
+              children: [
+                const SizedBox(
+                  height: 100,
+                ),
+                Expanded(
+                  child: makeList(snapshot),
+                ),
+              ],
+            );
           } else {
             return const Center(
               child: CircularProgressIndicator(),
@@ -42,7 +51,20 @@ class HomeScreen extends StatelessWidget {
       itemCount: snapshot.data!.length,
       itemBuilder: (context, index) {
         var webtoon = snapshot.data![index];
-        return Text(webtoon.title);
+        return Column(
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              decoration: const BoxDecoration(
+                color: Colors.yellow,
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+              child: Image.network(webtoon.thumb),
+            ),
+            Text(webtoon.title),
+          ],
+        );
       },
       separatorBuilder: (context, index) => const SizedBox(
         width: 30,
