@@ -23,6 +23,35 @@ class DetailScreen extends StatelessWidget {
           ),
         ),
       ),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 50,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                clipBehavior: Clip.hardEdge,
+                width: 260,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      offset: const Offset(5, 5),
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
+                child: Image.network(
+                  thumb,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
