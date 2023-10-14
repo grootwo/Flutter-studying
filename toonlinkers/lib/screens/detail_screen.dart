@@ -15,11 +15,11 @@ class DetailScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
         title: Text(
           title,
           style: const TextStyle(
             fontSize: 25,
-            color: Colors.black,
           ),
         ),
       ),
