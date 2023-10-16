@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:toonlinkers/models/Webtoon_detail_model.dart';
+import 'package:toonlinkers/models/webtoon_detail_model.dart';
 import 'package:toonlinkers/models/webtoon_model.dart';
 
 class ApiService {
