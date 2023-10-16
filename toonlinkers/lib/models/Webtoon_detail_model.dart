@@ -1,5 +1,6 @@
 class WebtoonDetailModel {
-  final String title, about, genre, age;
+  final String title, about, genre;
+  final String age;
 
   WebtoonDetailModel(
     this.title,
