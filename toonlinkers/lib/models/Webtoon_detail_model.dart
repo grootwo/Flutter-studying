@@ -1,13 +1,5 @@
 class WebtoonDetailModel {
-  final String title, about, genre;
-  final String age;
-
-  WebtoonDetailModel(
-    this.title,
-    this.about,
-    this.genre,
-    this.age,
-  );
+  final String title, about, genre, age;
 
   WebtoonDetailModel.fromJson(Map<String, dynamic> json)
       : title = json['title'],
