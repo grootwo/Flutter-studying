@@ -15,7 +15,7 @@ class ApiService {
     final url = Uri.parse('$baseUrl/$today');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      final List<dynamic> webtoonsJson = jsonDecode(response.body);
+      final webtoonsJson = jsonDecode(response.body);
       for (var webtoonJson in webtoonsJson) {
         webtoons.add(WebtoonModel.fromJson(webtoonJson));
       }
@@ -28,7 +28,7 @@ class ApiService {
     final url = Uri.parse('$baseUrl/$id');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      dynamic webtoonInfoJson = jsonDecode(response.body);
+      final webtoonInfoJson = jsonDecode(response.body);
       return WebtoonDetailModel.fromJson(webtoonInfoJson);
     } else {
       throw Error();
@@ -38,7 +38,7 @@ class ApiService {
   static Future<List<WebtoonEpisodeModel>> getEpisodesInfoById(
       String id) async {
     List<WebtoonEpisodeModel> episodes = [];
-    final url = Uri.parse('$baseUrl/$id');
+    final url = Uri.parse('$baseUrl/$id/episodes');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final webtoonEpisodesInfoJson = jsonDecode(response.body);
