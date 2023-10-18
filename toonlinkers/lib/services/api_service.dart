@@ -41,7 +41,7 @@ class ApiService {
     final url = Uri.parse('$baseUrl/$id');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      dynamic webtoonEpisodesInfoJson = jsonDecode(response.body);
+      final webtoonEpisodesInfoJson = jsonDecode(response.body);
       for (var episodeJson in webtoonEpisodesInfoJson) {
         episodes.add(WebtoonEpisodeModel.fromJson(episodeJson));
       }

@@ -72,6 +72,21 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
             ],
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            child: Column(children: [
+              FutureBuilder(
+                future: webtoon,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Text(snapshot.data!.about);
+                  } else {
+                    return const Text('...');
+                  }
+                },
+              )
+            ]),
+          )
         ],
       ),
     );
