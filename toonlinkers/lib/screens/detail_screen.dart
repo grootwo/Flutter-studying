@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toonlinkers/models/Webtoon_detail_model.dart';
+import 'package:toonlinkers/models/webtoon_detail_model.dart';
 import 'package:toonlinkers/models/webtoon_episode_model.dart';
 import 'package:toonlinkers/services/api_service.dart';
 
