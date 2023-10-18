@@ -73,7 +73,7 @@ class _DetailScreenState extends State<DetailScreen> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 35),
             child: FutureBuilder(
               future: webtoon,
               builder: (context, snapshot) {
@@ -81,11 +81,23 @@ class _DetailScreenState extends State<DetailScreen> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('${snapshot.data!.genre} / | ${snapshot.data!.age}'),
+                      Text(
+                        '${snapshot.data!.genre} | ${snapshot.data!.age}',
+                        style: const TextStyle(
+                          fontSize: 17,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Text(snapshot.data!.about),
+                      Text(
+                        snapshot.data!.about,
+                        style: const TextStyle(
+                          fontSize: 17,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ],
                   );
                 } else {
