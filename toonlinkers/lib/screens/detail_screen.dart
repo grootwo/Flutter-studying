@@ -74,18 +74,25 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            child: Column(children: [
-              FutureBuilder(
-                future: webtoon,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data!.about);
-                  } else {
-                    return const Text('...');
-                  }
-                },
-              )
-            ]),
+            child: FutureBuilder(
+              future: webtoon,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('${snapshot.data!.genre} / | ${snapshot.data!.age}'),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(snapshot.data!.about),
+                    ],
+                  );
+                } else {
+                  return const Text('...');
+                }
+              },
+            ),
           )
         ],
       ),
