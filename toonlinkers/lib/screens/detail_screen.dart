@@ -109,6 +109,9 @@ class _DetailScreenState extends State<DetailScreen> {
                       }
                     },
                   ),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   FutureBuilder(
                     future: episodes,
                     builder: (context, snapshot) {
@@ -116,7 +119,35 @@ class _DetailScreenState extends State<DetailScreen> {
                         return Column(
                           children: [
                             for (var episode in snapshot.data!)
-                              Text(episode.title)
+                              Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          offset: const Offset(3, 3),
+                                          blurRadius: 5)
+                                    ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          episode.title,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        const Icon(
+                                          Icons.chevron_right_outlined,
+                                        ),
+                                      ],
+                                    ),
+                                  ))
                           ],
                         );
                       } else {
