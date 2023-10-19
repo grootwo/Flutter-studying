@@ -120,6 +120,9 @@ class _DetailScreenState extends State<DetailScreen> {
                           children: [
                             for (var episode in snapshot.data!)
                               Container(
+                                  margin: const EdgeInsets.only(
+                                    bottom: 10,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20),
@@ -131,7 +134,10 @@ class _DetailScreenState extends State<DetailScreen> {
                                     ],
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(15),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 15,
+                                      horizontal: 25,
+                                    ),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
