@@ -122,7 +122,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             for (var episode in snapshot.data!)
                               Episode(
                                 episode: episode,
-                                episodeId: widget.id,
+                                webtoonId: widget.id,
                               )
                           ],
                         );
