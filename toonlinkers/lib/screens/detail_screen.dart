@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toonlinkers/models/webtoon_detail_model.dart';
 import 'package:toonlinkers/models/webtoon_episode_model.dart';
 import 'package:toonlinkers/services/api_service.dart';
+import 'package:toonlinkers/widgets/episode_widget.dart';
 
 class DetailScreen extends StatefulWidget {
   final String title, thumb, id;
@@ -119,41 +120,10 @@ class _DetailScreenState extends State<DetailScreen> {
                         return Column(
                           children: [
                             for (var episode in snapshot.data!)
-                              Container(
-                                  margin: const EdgeInsets.only(
-                                    bottom: 10,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
-                                          offset: const Offset(3, 3),
-                                          blurRadius: 5)
-                                    ],
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 15,
-                                      horizontal: 25,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          episode.title,
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        const Icon(
-                                          Icons.chevron_right_outlined,
-                                        ),
-                                      ],
-                                    ),
-                                  ))
+                              Episode(
+                                episode: episode,
+                                episodeId: widget.id,
+                              )
                           ],
                         );
                       } else {
