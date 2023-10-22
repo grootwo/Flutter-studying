@@ -45,7 +45,9 @@ class Episode extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  episode.title,
+                  episode.title.length >= 23
+                      ? '${episode.title.substring(0, 23)}...'
+                      : episode.title,
                   style: const TextStyle(
                     fontSize: 16,
                   ),
