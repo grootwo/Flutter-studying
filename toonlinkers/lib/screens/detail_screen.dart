@@ -39,7 +39,15 @@ class _DetailScreenState extends State<DetailScreen> {
     }
   }
 
-  onHeartPressd() async {
+  @override
+  void initState() {
+    super.initState();
+    webtoon = ApiService.getToonInfoById(widget.id);
+    episodes = ApiService.getEpisodesInfoById(widget.id);
+    initPrefs();
+  }
+
+  void onHeartPressd() async {
     final likedToons = prefs.getStringList('likedToons');
     if (likedToons != null) {
       if (isLiked) {
@@ -49,17 +57,9 @@ class _DetailScreenState extends State<DetailScreen> {
       }
       await prefs.setStringList('likedToons', likedToons);
       setState(() {
-        isLiked != isLiked;
+        isLiked = !isLiked;
       });
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    webtoon = ApiService.getToonInfoById(widget.id);
-    episodes = ApiService.getEpisodesInfoById(widget.id);
-    initPrefs();
   }
 
   @override
