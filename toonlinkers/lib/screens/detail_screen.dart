@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toonlinkers/models/webtoon_detail_model.dart';
 import 'package:toonlinkers/models/webtoon_episode_model.dart';
 import 'package:toonlinkers/services/api_service.dart';
@@ -21,12 +22,27 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   late Future<WebtoonDetailModel> webtoon;
   late Future<List<WebtoonEpisodeModel>> episodes;
+  late SharedPreferences prefs;
+  bool isLiked = false;
+
+  void initPrefs() async {
+    prefs = await SharedPreferences.getInstance();
+    final likedToons = prefs.getStringList('likedToons');
+    if (likedToons != null) {
+      if (likedToons.contains(widget.id)) {
+        isLiked = true;
+      }
+    } else {
+      await prefs.setStringList('likedToons', []);
+    }
+  }
 
   @override
   void initState() {
     super.initState();
     webtoon = ApiService.getToonInfoById(widget.id);
     episodes = ApiService.getEpisodesInfoById(widget.id);
+    initPrefs();
   }
 
   @override
@@ -42,6 +58,12 @@ class _DetailScreenState extends State<DetailScreen> {
             fontSize: 25,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.favorite_outline_rounded),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
