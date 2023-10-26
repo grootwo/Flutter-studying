@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomotimer/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,20 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'hallo',
-              style: TextStyle(
-                fontSize: 30,
-              ),
-            ),
-          ],
-        )),
-      ),
+      home: HomeScreen(),
     );
   }
 }
