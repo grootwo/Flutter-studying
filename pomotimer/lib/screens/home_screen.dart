@@ -12,17 +12,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Text(
-              'Working',
-              style: TextStyle(
+              isWorking ? 'Working' : 'Resting',
+              style: const TextStyle(
                 fontSize: 45,
               ),
             ),
