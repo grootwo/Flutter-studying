@@ -46,6 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  String getTimeFormat(int sec) {
+    return Duration(seconds: sec).toString().substring(2, 7);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       child: Text(
-                        '$leftTime',
+                        getTimeFormat(leftTime),
                         style: const TextStyle(
                           fontSize: 40,
                         ),
