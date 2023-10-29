@@ -9,14 +9,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int leftTime = 1500;
+  int setTime = 1500;
+  int leftTime = 10;
   late Timer timer;
-  bool isTiktok = false;
+  bool isTick = false;
   bool isWorking = true;
 
   void onStartPressed() {
     setState(() {
-      isTiktok = true;
+      isTick = true;
     });
     timer = Timer.periodic(
       const Duration(seconds: 1),
@@ -25,15 +26,24 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void onPausePressed() {
+    timer.cancel();
     setState(() {
-      isTiktok = false;
+      isTick = false;
     });
   }
 
-  void onTick(Timer) {
-    setState(() {
-      leftTime -= 1;
-    });
+  void onTick(Timer timer) {
+    if (leftTime == 0) {
+      timer.cancel();
+      setState(() {
+        leftTime = setTime;
+        isTick = false;
+      });
+    } else {
+      setState(() {
+        leftTime -= 1;
+      });
+    }
   }
 
   @override
@@ -114,9 +124,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       child: IconButton(
-                        onPressed: isTiktok ? onPausePressed : onStartPressed,
+                        onPressed: isTick ? onPausePressed : onStartPressed,
                         icon: Icon(
-                          isTiktok
+                          isTick
                               ? Icons.pause_rounded
                               : Icons.play_arrow_rounded,
                           size: 30,
