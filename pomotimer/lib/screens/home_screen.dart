@@ -8,7 +8,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int leftTime = 1500;
+  bool isTiktok = false;
   bool isWorking = true;
+
+  onStartPressed() {
+    setState(() {
+      isTiktok = true;
+    });
+  }
+
+  onPausePressed() {
+    setState(() {
+      isTiktok = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      child: const Text(
-                        '25:00',
-                        style: TextStyle(
+                      child: Text(
+                        '$leftTime',
+                        style: const TextStyle(
                           fontSize: 40,
                         ),
                       ),
@@ -88,9 +102,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.play_arrow_rounded,
+                        onPressed: isTiktok ? onPausePressed : onStartPressed,
+                        icon: Icon(
+                          isTiktok
+                              ? Icons.pause_rounded
+                              : Icons.play_arrow_rounded,
                           size: 30,
                         ),
                       ),
