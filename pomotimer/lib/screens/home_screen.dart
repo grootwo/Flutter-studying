@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,18 +10,29 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int leftTime = 1500;
+  late Timer timer;
   bool isTiktok = false;
   bool isWorking = true;
 
-  onStartPressed() {
+  void onStartPressed() {
     setState(() {
       isTiktok = true;
     });
+    timer = Timer.periodic(
+      const Duration(seconds: 1),
+      onTick,
+    );
   }
 
-  onPausePressed() {
+  void onPausePressed() {
     setState(() {
       isTiktok = false;
+    });
+  }
+
+  void onTick(Timer) {
+    setState(() {
+      leftTime -= 1;
     });
   }
 
