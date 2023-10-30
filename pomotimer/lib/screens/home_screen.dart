@@ -32,6 +32,14 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onResetPressed() {
+    timer.cancel();
+    setState(() {
+      isTick = false;
+      leftTime = setTime;
+    });
+  }
+
   void onTick(Timer timer) {
     if (leftTime == 0) {
       timer.cancel();
@@ -156,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: onResetPressed,
                         icon: const Icon(
                           Icons.square_rounded,
                           size: 20,
