@@ -182,11 +182,11 @@ class _HomeScreenState extends State<HomeScreen> {
             flex: 1,
             child: GestureDetector(
               onTap: () {
-                print('open window');
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const TotalTimeScreen(),
+                    fullscreenDialog: true,
                   ),
                 );
               },
