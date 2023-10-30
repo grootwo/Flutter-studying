@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:pomotimer/screens/total_time_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -178,25 +180,36 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Flexible(
             flex: 1,
-            child: Container(
-              alignment: Alignment.topCenter,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    offset: const Offset(0, -1),
-                    blurRadius: 10,
-                  )
-                ],
-              ),
-              child: const Padding(
-                padding: EdgeInsetsDirectional.only(top: 30),
-                child: Text(
-                  "Total Time",
-                  style: TextStyle(
-                    fontSize: 40,
+            child: GestureDetector(
+              onTap: () {
+                print('open window');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TotalTimeScreen(),
+                  ),
+                );
+              },
+              child: Container(
+                alignment: Alignment.topCenter,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      offset: const Offset(0, -1),
+                      blurRadius: 10,
+                    )
+                  ],
+                ),
+                child: const Padding(
+                  padding: EdgeInsetsDirectional.only(top: 30),
+                  child: Text(
+                    "Total Time",
+                    style: TextStyle(
+                      fontSize: 40,
+                    ),
                   ),
                 ),
               ),
