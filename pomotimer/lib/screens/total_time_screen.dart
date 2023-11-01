@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TotalTimeScreen extends StatelessWidget {
-  const TotalTimeScreen({
-    super.key,
-    required this.totalTime,
-  });
-  final String totalTime;
+  const TotalTimeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +18,8 @@ class TotalTimeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(totalTime),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.highlight_remove),
-            ),
-          ],
-        ),
+      body: const Center(
+        child: Text('Hallo'),
       ),
     );
   }
