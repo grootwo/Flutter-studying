@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int setTime = 1500;
   int leftTime = 10;
+  int totalTime = 0;
   late Timer timer;
   bool isTick = false;
   bool isWorking = true;
@@ -44,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onTick(Timer timer) {
     if (leftTime == 0) {
+      totalTime += setTime;
       timer.cancel();
       setState(() {
         leftTime = setTime;
@@ -185,7 +187,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TotalTimeScreen(),
+                    builder: (context) => TotalTimeScreen(
+                      totalTime: getTimeFormat(totalTime),
+                    ),
                     fullscreenDialog: true,
                   ),
                 );
