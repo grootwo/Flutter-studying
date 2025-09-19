@@ -7,9 +7,9 @@ void main() {
   print('first price: ${bmw.price.toInt()}'); // 100000
 
 // 세 번 할인 적용
-  bmw.doublesaleCar();
-  bmw.doublesaleCar();
-  bmw.doublesaleCar();
+  bmw.saleCar();
+  bmw.saleCar();
+  bmw.saleCar();
 
 // 최종 가격 출력
   print('final price: ${bmw.price.toInt()}'); // 72900
@@ -26,7 +26,7 @@ class Car {
     this.name = name;
   }
 
-  doublesaleCar() {
+  double saleCar() {
     price= price* 0.9;
     return price;
   }
