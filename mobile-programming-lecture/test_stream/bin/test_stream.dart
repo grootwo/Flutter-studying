@@ -18,6 +18,6 @@ Future<int> sumStream(Stream<int> stream) async {
 
 Future<void> main() async {
   final stream = countStream(5);
-  final sum = sumStream(stream);
+  final sum = await sumStream(stream);
   print('sum: $sum'); // 15
 }
