@@ -1,23 +1,10 @@
 import 'dart:async';
 
-Stream<int> countStream(int to) async* {
-  for (int i = 1; i <= to; i ++) {
-    print('countStream: $i');
-    yield i;
-  }
-}
+void main() async {
+  var stream = Stream.fromIterable([1, 2, 3]);
 
-Future<int> sumStream(Stream<int> stream) async {
-  var sum = 0;
-  await for (var value in stream) {
-    print("sumStream: $value");
-    sum += value;
-  }
-  return sum;
-}
-
-Future<void> main() async {
-  final stream = countStream(5);
-  final sum = await sumStream(stream);
-  print('sum: $sum'); // 15
+  stream.first.then((value) => print('first: $value'));
+  stream.last.then((value) => print('last: $value'));
+  stream.isEmpty.then((value) => print('isEmpty: $value'));
+  stream.length.then((value) => print('length: $value'));
 }
