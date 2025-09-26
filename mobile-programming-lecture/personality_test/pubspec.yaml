@@ -63,6 +63,7 @@ flutter:
     - res/api/mbti.json
     - res/api/test1.json
     - res/api/test2.json
+    - res/api/list.json
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
