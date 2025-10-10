@@ -32,9 +32,12 @@ class _DetailPage extends State<DetailPage> {
             // Navigator.pop()을 이용하여 이전 화면(QuestionPage)으로 복귀
             ElevatedButton(
               onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("새 테스트를 시작할 수 있습니다")),
+                );
                 Navigator.of(context).pop();
               },
-              child: const Text('돌아가기'),
+              child: const Text('메인으로 돌아가기'),
             ),
           ],
         ),
