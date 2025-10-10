@@ -83,4 +83,5 @@ class DefaultFirebaseOptions {
     authDomain: 'example-abfd2.firebaseapp.com',
     storageBucket: 'example-abfd2.firebasestorage.app',
   );
+
 }
