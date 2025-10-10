@@ -25,10 +25,19 @@ class _DetailPage extends State<DetailPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // [p.98] 질문 내용 표시
-            Text(widget.question),
+            Text(
+              widget.question,
+              style: TextStyle(fontSize: 20),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 30),
             // [p.99] 선택한 답변 내용 표시
-            Text(widget.answer),
-            // [p.100] ElevatedButton: '돌아가기' 버튼
+            Text(
+              widget.answer,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 50),
+            // [p.100] ElevatedButton: '돌아가x기' 버튼
             // Navigator.pop()을 이용하여 이전 화면(QuestionPage)으로 복귀
             ElevatedButton(
               onPressed: () {
