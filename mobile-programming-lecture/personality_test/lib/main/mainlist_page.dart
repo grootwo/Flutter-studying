@@ -84,9 +84,9 @@ class _MainPage extends State<MainPage> {
                       child: SizedBox(
                         height: 50,
                         child: Card(
-                          color: Colors.lightBlue,
+                          color: Colors.white,
                           child: ListTile(
-                            leading: Icon(Icons.psychology),
+                            leading: Icon(Icons.check),
                             title: Text(list['questions'][index]['title']),
                             trailing: const Icon(Icons.arrow_forward_ios),
                           )
