@@ -84,9 +84,12 @@ class _MainPage extends State<MainPage> {
                       child: SizedBox(
                         height: 50,
                         child: Card(
-                          child: Text(
-                            list['questions'][index]['title'].toString(),
-                          ),
+                          color: Colors.lightBlue,
+                          child: ListTile(
+                            leading: Icon(Icons.psychology),
+                            title: Text(list['questions'][index]['title']),
+                            trailing: const Icon(Icons.arrow_forward_ios),
+                          )
                         ),
                       ),
                     );
