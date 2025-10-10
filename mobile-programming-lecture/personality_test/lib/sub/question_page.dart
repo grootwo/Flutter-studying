@@ -35,25 +35,26 @@ class _QuestionPage extends State<QuestionPage> {
 // 선택지(라디오 버튼) 생성
           List<Widget> widgets = List<Widget>.generate(
             (questions['selects'] as List<dynamic>).length,
-                (int index) => SizedBox(
-              height: 100,
-              child: Column(
-                children: [
+                (int index) =>
+                SizedBox(
+                  height: 100,
+                  child: Column(
+                    children: [
 // 선택지 텍스트 표시
-                  Text(questions['selects'][index]),
+                      Text(questions['selects'][index]),
 // [p.94] Radio 위젯으로 선택 기능 구현
-                  Radio(
-                    value: index,
-                    groupValue: selectNumber,
-                    onChanged: (value) {
-                      setState(() {
-                        selectNumber = index;
-                      });
-                    },
+                      Radio(
+                        value: index,
+                        groupValue: selectNumber,
+                        onChanged: (value) {
+                          setState(() {
+                            selectNumber = index;
+                          });
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                ),
           );
 // Scaffold를 이용해 전체 화면 구성
           return Scaffold(
@@ -106,11 +107,11 @@ class _QuestionPage extends State<QuestionPage> {
               ],
             ),
           );
+        }
 // [p.93] 데이터 로드 실패 시 오류 표시
         else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         }
-      }
 // [보조] 예외적 빈 상태 처리
         else {
         return const SizedBox.shrink();
