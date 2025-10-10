@@ -40,11 +40,16 @@ return const Center(child: CircularProgressIndicator());
           child: Column(
             children: [
 // 선택지 텍스트 표시
-              Text(questions['selects'][index]),
+          Text(questions['selects'][index],
+          style: const TextStyle(
+            fontSize: 18,
+          ),
+        ),
 // [p.94] Radio 위젯으로 선택 기능 구현
               Radio(
                 value: index,
                 groupValue: selectNumber,
+                activeColor: Colors.purple,
                 onChanged: (value) {
                   setState(() {
                     selectNumber = index;
@@ -61,7 +66,13 @@ return const Center(child: CircularProgressIndicator());
     body: Column(
       children: [
 // [p.93] 질문 본문 출력
-        Text(questions['question'].toString()),
+Text(questions['question'].toString(),
+style: const TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+),
+  textAlign: TextAlign.center,
+),
 // [p.93] Expanded + ListView로 선택지 스크롤 가능 구조 구성
         Expanded(
           child: ListView.builder(
