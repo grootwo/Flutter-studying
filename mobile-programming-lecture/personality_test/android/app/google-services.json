@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "306103682715",
+    "firebase_url": "https://example-abfd2-default-rtdb.firebaseio.com",
     "project_id": "example-abfd2",
     "storage_bucket": "example-abfd2.firebasestorage.app"
   },

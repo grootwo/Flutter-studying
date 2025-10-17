@@ -46,7 +46,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '306103682715',
     projectId: 'example-abfd2',
     authDomain: 'example-abfd2.firebaseapp.com',
+    databaseURL: 'https://example-abfd2-default-rtdb.firebaseio.com',
     storageBucket: 'example-abfd2.firebasestorage.app',
+    measurementId: 'G-Q8BY0Z2HJG',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -54,6 +56,7 @@ class DefaultFirebaseOptions {
     appId: '1:306103682715:android:35e8729d255168b995a83e',
     messagingSenderId: '306103682715',
     projectId: 'example-abfd2',
+    databaseURL: 'https://example-abfd2-default-rtdb.firebaseio.com',
     storageBucket: 'example-abfd2.firebasestorage.app',
   );
 
@@ -62,6 +65,7 @@ class DefaultFirebaseOptions {
     appId: '1:306103682715:ios:316b02143b3bfe0695a83e',
     messagingSenderId: '306103682715',
     projectId: 'example-abfd2',
+    databaseURL: 'https://example-abfd2-default-rtdb.firebaseio.com',
     storageBucket: 'example-abfd2.firebasestorage.app',
     iosBundleId: 'com.example.personalityTest',
   );
@@ -71,6 +75,7 @@ class DefaultFirebaseOptions {
     appId: '1:306103682715:ios:316b02143b3bfe0695a83e',
     messagingSenderId: '306103682715',
     projectId: 'example-abfd2',
+    databaseURL: 'https://example-abfd2-default-rtdb.firebaseio.com',
     storageBucket: 'example-abfd2.firebasestorage.app',
     iosBundleId: 'com.example.personalityTest',
   );
@@ -81,7 +86,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '306103682715',
     projectId: 'example-abfd2',
     authDomain: 'example-abfd2.firebaseapp.com',
+    databaseURL: 'https://example-abfd2-default-rtdb.firebaseio.com',
     storageBucket: 'example-abfd2.firebasestorage.app',
+    measurementId: 'G-SSXR7L2083',
   );
 
 }
