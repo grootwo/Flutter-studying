@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // [p.81] ThemeData: 앱의 일관된 색상과 스타일을 정의
         // ColorScheme.fromSeed()는 시드(seed) 색상 하나로 전체 팔레트를 자동 생성합니다.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
         useMaterial3: true, // [p.81] 최신 Material Design 3 스타일 적용
       ),
       // [p.82] home: 앱이 실행될 때 처음 표시되는 화면 위젯
