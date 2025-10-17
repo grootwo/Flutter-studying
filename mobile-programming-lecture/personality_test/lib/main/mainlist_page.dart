@@ -88,7 +88,7 @@ class _MainPage extends State<MainPage> {
                 child: SizedBox(
                   height: remoteConfig.getInt('item_height').toDouble(),
                   child: Card(
-                    color: Colors.amber,
+                    color: Colors.white,
                     child: Text(item['title'].toString()),
                   ),
                 ),
