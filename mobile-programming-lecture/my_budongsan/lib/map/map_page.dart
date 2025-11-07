@@ -29,6 +29,7 @@ class _MapPage extends State<MapPage> {
           // 수정: onPressed에 필터 대화 상자 호출 로직 추가
           IconButton(
             onPressed: () async {
+              // 추가: Navigator를 사용한 필터 대화 상자 표시
               var result = await Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
@@ -39,16 +40,13 @@ class _MapPage extends State<MapPage> {
 
               // 추가: 사용자가 필터를 설정하고 '확인'을 눌렀을 때 결과 반영
               if (result != null) {
-                setState(() {
-                  mapFilter = result as MapFilter;
-                });
+                mapFilter = result as MapFilter;
               }
             },
             icon: const Icon(Icons.search),
           ),
         ],
       ),
-
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
