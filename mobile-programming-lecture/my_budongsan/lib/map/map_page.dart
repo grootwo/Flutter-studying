@@ -1,6 +1,8 @@
 // lib/map/map_page.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'map_filter.dart';          // 추가: 필터 데이터 클래스 import
+import 'map_filter_dialog.dart';  // 추가: 필터 대화 상자 클래스 import
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -11,6 +13,7 @@ class MapPage extends StatefulWidget {
 
 class _MapPage extends State<MapPage> {
   int currentItem = 0; // 현재 선택된 하단 메뉴 인덱스
+  MapFilter mapFilter = MapFilter(); // 추가: 필터 상태 저장용 객체 생성
 
   @override
   void initState() {
@@ -23,8 +26,23 @@ class _MapPage extends State<MapPage> {
       appBar: AppBar(
         title: const Text('My 부동산'),
         actions: [
+          // 수정: onPressed에 필터 대화 상자 호출 로직 추가
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              // 추가: Navigator를 사용한 필터 대화 상자 표시
+              var result = await Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return MapFilterDialog(mapFilter); // 추가: 필터 대화 상자 호출
+                  },
+                ),
+              );
+
+              // 추가: 사용자가 필터를 설정하고 '확인'을 눌렀을 때 결과 반영
+              if (result != null) {
+                mapFilter = result as MapFilter;
+              }
+            },
             icon: const Icon(Icons.search),
           ),
         ],
