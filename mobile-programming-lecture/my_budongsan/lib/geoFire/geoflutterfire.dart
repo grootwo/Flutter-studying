@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mybudongsan/geoFire/collection/with_converter.dart';
+import 'package:my_budongsan/geoFire/collection/with_converter.dart';
 
 import 'collection/default.dart';
 import 'models/point.dart';
