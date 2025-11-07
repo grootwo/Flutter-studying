@@ -1,8 +1,10 @@
 // lib/map/map_page.dart
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'map_filter.dart';          // 추가: 필터 데이터 클래스 import
-import 'map_filter_dialog.dart';  // 추가: 필터 대화 상자 클래스 import
+import 'package:google_maps_flutter/google_maps_flutter.dart'; // ✅ 추가: 구글 지도 패키지
+import 'map_filter.dart';          // 필터 데이터 클래스 import
+import 'map_filter_dialog.dart';  // 필터 대화 상자 클래스 import
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -13,7 +15,19 @@ class MapPage extends StatefulWidget {
 
 class _MapPage extends State<MapPage> {
   int currentItem = 0; // 현재 선택된 하단 메뉴 인덱스
-  MapFilter mapFilter = MapFilter(); // 추가: 필터 상태 저장용 객체 생성
+  MapFilter mapFilter = MapFilter(); // 필터 상태 저장용 객체 생성
+
+  // ✅ 수정: 제네릭 명시한 Completer
+  final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
+
+  // ✅ 추가: 지도에 표시할 마커 집합
+  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
+
+  // ✅ 수정: 교재 기준 초기 카메라 위치 (성북구 근처)
+  static const CameraPosition _googleMapCamera = CameraPosition(
+    target: LatLng(37.571320, 127.029043),
+    zoom: 15.0,
+  );
 
   @override
   void initState() {
@@ -26,35 +40,34 @@ class _MapPage extends State<MapPage> {
       appBar: AppBar(
         title: const Text('My 부동산'),
         actions: [
-          // 수정: onPressed에 필터 대화 상자 호출 로직 추가
+          // ✅ 수정: 필터 대화 상자 호출 로직
           IconButton(
             onPressed: () async {
-              // 추가: Navigator를 사용한 필터 대화 상자 표시
               var result = await Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
-                    return MapFilterDialog(mapFilter); // 추가: 필터 대화 상자 호출
+                    return MapFilterDialog(mapFilter);
                   },
                 ),
               );
 
-              // 추가: 사용자가 필터를 설정하고 '확인'을 눌렀을 때 결과 반영
               if (result != null) {
-                mapFilter = result as MapFilter;
+                setState(() {
+                  mapFilter = result as MapFilter;
+                });
               }
             },
             icon: const Icon(Icons.search),
           ),
         ],
       ),
+
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
+              decoration: BoxDecoration(color: Colors.blue),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -87,7 +100,21 @@ class _MapPage extends State<MapPage> {
           ],
         ),
       ),
-      body: currentItem == 0 ? Container() : ListView(),
+
+      // ✅ 수정: 현재 탭에 따라 지도 or 리스트 표시
+      body: currentItem == 0
+          ? GoogleMap(
+        mapType: MapType.normal,
+        initialCameraPosition: _googleMapCamera,
+        onMapCreated: (GoogleMapController controller) {
+          if (!_controller.isCompleted) {
+            _controller.complete(controller);
+          }
+        },
+        markers: Set<Marker>.of(markers.values),
+      )
+          : ListView(),
+
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentItem,
         onTap: (value) {
@@ -106,8 +133,18 @@ class _MapPage extends State<MapPage> {
           ),
         ],
       ),
+
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () async {
+          // ✅ 추가: 현재 위치 기준 지도 이동 예시
+          final GoogleMapController controller = await _controller.future;
+          await controller.animateCamera(
+            CameraUpdate.newLatLngZoom(const LatLng(37.571320, 127.029043), 15),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('현재 위치로 지도 이동 완료')),
+          );
+        },
         label: const Text('이 위치로 검색하기'),
       ),
     );
