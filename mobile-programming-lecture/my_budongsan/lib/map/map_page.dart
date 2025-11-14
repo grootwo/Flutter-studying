@@ -1,17 +1,19 @@
 // lib/map/map_page.dart
-// 지도 기반 Firestore 데이터 시각화 및 geoFire 반경 검색 예제
+// 지도 기반 Firestore 데이터 시각화 및 geoFire 반경 검색 + 상세페이지 이동 기능
+
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-// ✅ 추가: Firestore 및 geoFire 관련 패키지 임포트
+// ✅ Firestore 및 geoFire 관련 패키지 임포트
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../geoFire/geoflutterfire.dart';
 import '../geoFire/models/point.dart';
 
 import 'map_filter.dart';
 import 'map_filter_dialog.dart';
+import 'apt_page.dart'; // ✅ 추가: 상세페이지 이동용 import
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -25,16 +27,16 @@ class _MapPage extends State<MapPage> {
   MapFilter mapFilter = MapFilter(); // 필터 정보 저장 객체
 
   late Completer<GoogleMapController> _controller =
-  Completer<GoogleMapController>(); // ✅ 수정: 재생성 가능하도록 late 사용
+  Completer<GoogleMapController>(); // ✅ late로 재생성 가능
 
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{}; // 지도 마커 집합
   MarkerId? selectedMarker;
-  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker; // 커스텀 아이콘 변수
+  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
   late List<DocumentSnapshot> documentList =
   List<DocumentSnapshot>.empty(growable: true); // Firestore 데이터 리스트
 
   static const CameraPosition _googleMapCamera = CameraPosition(
-    target: LatLng(37.571320, 127.029043), // 서울 성북구 중심 좌표
+    target: LatLng(37.571320, 127.029043), // 서울 성북구 중심
     zoom: 15.0,
   );
 
@@ -76,7 +78,7 @@ class _MapPage extends State<MapPage> {
       longitude: centerBounds.longitude,
     );
 
-    const double radius = 50; // 🔍 반경 확장 (테스트용)
+    const double radius = 50; // 🔍 반경 확장
     const String field = 'position';
 
     final Stream<List<DocumentSnapshot>> stream = geo
@@ -107,15 +109,27 @@ class _MapPage extends State<MapPage> {
         final MarkerId markerId = MarkerId(info['position']['geohash']);
         final Marker marker = Marker(
           markerId: markerId,
-          infoWindow: InfoWindow(
-            title: info['name'],
-            snippet: info['address'],
-          ),
           position: LatLng(
             (info['position']['geopoint'] as GeoPoint).latitude,
             (info['position']['geopoint'] as GeoPoint).longitude,
           ),
           icon: markerIcon,
+          infoWindow: InfoWindow(
+            title: info['name'],
+            snippet: info['address'],
+            // ✅ InfoWindow 클릭 시 상세페이지로 이동
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AptPage(
+                    aptHash: info['position']['geohash'],
+                    aptInfo: info,
+                  ),
+                ),
+              );
+            },
+          ),
         );
 
         setState(() {
@@ -195,7 +209,7 @@ class _MapPage extends State<MapPage> {
         ),
       ),
 
-      // ✅ 수정: 지도 ↔ 목록 전환 구현
+      // ✅ 지도 ↔ 목록 전환 구현
       body: currentItem == 0
           ? GoogleMap(
         mapType: MapType.normal,
@@ -221,13 +235,24 @@ class _MapPage extends State<MapPage> {
                 const Icon(Icons.arrow_circle_right_sharp),
               ),
             ),
-            onTap: () {},
+            // ✅ 목록 클릭 시 상세 페이지로 이동
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AptPage(
+                    aptHash: item['position']['geohash'],
+                    aptInfo: item,
+                  ),
+                ),
+              );
+            },
           );
         },
         itemCount: documentList.length,
       ),
 
-      // ✅ 수정: 지도 복원 로직 추가
+      // ✅ 지도 복원 로직
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentItem,
         onTap: (value) {
@@ -244,7 +269,6 @@ class _MapPage extends State<MapPage> {
         ],
       ),
 
-      // ✅ FloatingActionButton: 지도 중심 Firestore 검색
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _searchApt,
         label: const Text('이 위치로 검색하기'),
