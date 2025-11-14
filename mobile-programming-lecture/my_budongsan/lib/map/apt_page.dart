@@ -23,7 +23,8 @@ class _AptPageState extends State<AptPage> {
   @override
   void initState() {
     super.initState();
-    _aptRef = FirebaseFirestore.instance.collection(widget.aptHash);
+    // ✅ 수정: 가상의 매매 데이터가 저장된 Firestore 컬렉션 참조
+    _aptRef = FirebaseFirestore.instance.collection('wydmu17me');
     _checkFavorite(); // 찜 여부 확인
   }
 
@@ -52,6 +53,7 @@ class _AptPageState extends State<AptPage> {
         ],
       ),
 
+      // ✅ 본문: 아파트 정보 + 거래 내역 표시
       body: Column(
         children: [
           _buildAptInfo(widget.aptInfo),
@@ -124,7 +126,7 @@ class _AptPageState extends State<AptPage> {
     );
   }
 
-  // 아파트 기본 정보 표시 위젯
+  // ✅ 아파트 기본 정보 표시 위젯
   Widget _buildAptInfo(Map<String, dynamic> aptInfo) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
