@@ -14,6 +14,7 @@ import '../geoFire/models/point.dart';
 import 'map_filter.dart';
 import 'map_filter_dialog.dart';
 import 'apt_page.dart'; // ✅ 추가: 상세페이지 이동용 import
+import 'package:my_budongsan/myFavorite/my_favorite_page.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -187,7 +188,7 @@ class _MapPage extends State<MapPage> {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const [
+          children: [
             DrawerHeader(
               decoration: BoxDecoration(color: Colors.blue),
               child: Column(
@@ -203,7 +204,14 @@ class _MapPage extends State<MapPage> {
                 ],
               ),
             ),
-            ListTile(title: Text('내가 선택한 아파트')),
+            ListTile(
+              title: const Text('내가 선택한 아파트'),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  return const MyFavoritePage();
+                }));
+              },
+            ),
             ListTile(title: Text('설정')),
           ],
         ),
