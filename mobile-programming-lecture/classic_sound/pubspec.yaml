@@ -40,6 +40,8 @@ dependencies:
   firebase_storage: ^13.0.4
   path_provider: ^2.1.5
   file_picker: ^10.3.6
+  connectivity_plus: ^7.0.0
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
