@@ -8,6 +8,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:306103682715:android:0c80bad58c472b0695a83e",
+        "android_client_info": {
+          "package_name": "com.example.classic_sound"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFEB4XtgFDr3qy11RJo-bzLNKSAyDC9nE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:306103682715:android:3288dc49733e593095a83e",
         "android_client_info": {
           "package_name": "com.example.my_budongsan"
