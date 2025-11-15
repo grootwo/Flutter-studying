@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ✅ Firestore 및 geoFire 관련 패키지 임포트
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,6 +16,7 @@ import 'map_filter.dart';
 import 'map_filter_dialog.dart';
 import 'apt_page.dart'; // ✅ 추가: 상세페이지 이동용 import
 import 'package:my_budongsan/myFavorite/my_favorite_page.dart';
+import 'package:my_budongsan/settings/setting_page.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -26,6 +28,7 @@ class MapPage extends StatefulWidget {
 class _MapPage extends State<MapPage> {
   int currentItem = 0; // 현재 하단 탭 상태
   MapFilter mapFilter = MapFilter(); // 필터 정보 저장 객체
+  MapType mapType = MapType.normal;
 
   late Completer<GoogleMapController> _controller =
   Completer<GoogleMapController>(); // ✅ late로 재생성 가능
@@ -212,7 +215,30 @@ class _MapPage extends State<MapPage> {
                 }));
               },
             ),
-            ListTile(title: Text('설정')),
+            ListTile(
+                title: const Text('설정'),
+              onTap: () async {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return SettingPage();
+                  })).then((value) async {
+                    final SharedPreferences prefs = await SharedPreferences.getInstance();
+                    final int? type = prefs.getInt('mapType');
+                    setState(() {
+                      switch (type) {
+                        case 0:
+                          mapType = MapType.terrain;
+                          break;
+                        case 1:
+                          mapType = MapType.satellite;
+                          break;
+                        case 2:
+                          mapType = MapType.hybrid;
+                          break;
+                      }
+                    });
+                  });
+              },
+            ),
           ],
         ),
       ),
@@ -220,7 +246,7 @@ class _MapPage extends State<MapPage> {
       // ✅ 지도 ↔ 목록 전환 구현
       body: currentItem == 0
           ? GoogleMap(
-        mapType: MapType.normal,
+        mapType: mapType,
         initialCameraPosition: _googleMapCamera,
         onMapCreated: (GoogleMapController controller) {
           if (!_controller.isCompleted) {
