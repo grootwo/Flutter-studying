@@ -94,7 +94,8 @@ class _IntroPageState extends State<IntroPage> {
             if (mounted) { // mounted check 추가
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => AuthPage()),
+                MaterialPageRoute(builder: (context) => AuthPage(database: widget.database,)),
+
               );
             }
           });
