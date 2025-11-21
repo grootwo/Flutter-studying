@@ -1,4 +1,5 @@
 import 'package:classic_sound/data/constant.dart';
+import 'package:classic_sound/view/main/main_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +40,14 @@ class _AuthPageState extends State<AuthPage> {
       'token': userCredential.user?.uid,
     });
     // 메인 페이지로 이동
-
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => MainPage(),
+      ),
+          (route) => false,
+    );
   }
+
 
   // 회원가입
   void _signUp() async {
