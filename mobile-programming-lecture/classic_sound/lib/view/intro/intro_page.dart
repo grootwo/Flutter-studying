@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:classic_sound/data/constant.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../auth/auth_page.dart';
 
 
 class IntroPage extends StatefulWidget {
@@ -51,7 +53,16 @@ class _IntroPageState extends State<IntroPage> {
         _isDialogOpen = false;
       }
 
-      Timer(const Duration(seconds: 2), () {});
+      Timer(const Duration(seconds: 2), () {
+        if (mounted) { // mounted check 추가
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => AuthPage(),
+            ),
+          );
+        }
+      });
+
     } else {
       _showOfflineDialog(); // 인터넷 연결 안되었을 때 다이얼로그 표시
     }
