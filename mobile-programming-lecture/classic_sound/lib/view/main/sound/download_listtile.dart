@@ -1,4 +1,5 @@
 import 'package:classic_sound/data/music.dart';
+import 'package:classic_sound/view/main/sound/sound_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:dio/dio.dart';
@@ -55,6 +56,10 @@ class _DownloadListTileState extends State<DownloadListTile> {
         // 파일 존재 여부 확인
         bool exists = await file.exists();
         if (exists) {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context){
+            return SoundDetailPage(music: widget.music);
+          }));
+
         } else {
           // 파일이 존재하지 않으면 다운로드 시작하기
           setState(() {
