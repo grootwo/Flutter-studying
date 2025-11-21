@@ -11,7 +11,6 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   final Database database = await MusicDatabase.initDatabase();
   runApp(MyApp(database: database,));
-
 }
 
 
