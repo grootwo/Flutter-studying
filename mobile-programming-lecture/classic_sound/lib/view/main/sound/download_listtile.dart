@@ -39,7 +39,7 @@ class _DownloadListTileState extends State<DownloadListTile> {
             strokeWidth: 5.0,
           )
               : const Icon(Icons.arrow_circle_right_sharp),
-          tileColor: Colors.grey[200],
+          tileColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
             side: BorderSide(color: Colors.grey[300]!, width: 1),
