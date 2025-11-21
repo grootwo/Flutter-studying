@@ -6,12 +6,17 @@ import 'package:dio/dio.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'dart:io';
 
+import 'package:sqflite/sqflite.dart';
+import 'package:classic_sound/data/local_database.dart';
+
 class DownloadListTile extends StatefulWidget {
   final Music music;
+  final Database database;
 
   const DownloadListTile({
     super.key,
-    required this.music,
+    required this.music, required this.database,
+
   });
 
   @override
@@ -80,8 +85,10 @@ class _DownloadListTileState extends State<DownloadListTile> {
           setState(() {
             isDownloading = false;
           });
+          MusicDatabase(widget.database).insertMusic(widget.music);
         }
       },
     );
   }
 }
+

@@ -6,10 +6,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../auth/auth_page.dart';
+import 'package:sqflite/sqflite.dart';
 
 
 class IntroPage extends StatefulWidget {
-  const IntroPage({super.key});
+  final Database database;
+  const IntroPage({super.key, required this.database});
+
 
   @override
   State<StatefulWidget> createState() {
@@ -81,7 +84,8 @@ class _IntroPageState extends State<IntroPage> {
             if (mounted) { // mounted check 추가
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => MainPage()),
+                MaterialPageRoute(builder: (context) => MainPage(database: widget.database,)),
+
               );
             }
           });
