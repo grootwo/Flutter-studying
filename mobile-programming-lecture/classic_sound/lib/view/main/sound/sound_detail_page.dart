@@ -112,7 +112,8 @@ class _SoundDetailPage extends State<SoundDetailPage> {
                     icon: const Icon(Icons.thumb_up),
                     padding: const EdgeInsets.all(5),
                     style: IconButton.styleFrom(
-                      backgroundColor: Colors.amberAccent,
+                      backgroundColor: Theme.of(context).primaryColor,
+                      foregroundColor: Colors.white,
                     ),
                   ),
 
@@ -137,7 +138,8 @@ class _SoundDetailPage extends State<SoundDetailPage> {
                     icon: const Icon(Icons.thumb_down),
                     padding: const EdgeInsets.all(5),
                     style: IconButton.styleFrom(
-                      backgroundColor: Colors.amberAccent,
+                      backgroundColor: Theme.of(context).primaryColor,
+                      foregroundColor: Colors.white,
                     ),
                   ),
                 ],
