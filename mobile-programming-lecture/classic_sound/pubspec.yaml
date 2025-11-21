@@ -43,6 +43,7 @@ dependencies:
   connectivity_plus: ^7.0.0
   shared_preferences: ^2.5.3
   firebase_auth: ^6.1.2
+  dio: ^5.9.0
 
 dev_dependencies:
   flutter_test:
