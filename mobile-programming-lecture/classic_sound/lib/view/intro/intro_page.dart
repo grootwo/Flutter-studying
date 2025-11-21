@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:classic_sound/data/constant.dart';
+import 'package:classic_sound/view/main/main_page.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../auth/auth_page.dart';
 
 
@@ -20,6 +22,26 @@ class _IntroPageState extends State<IntroPage> {
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
   bool _isDialogOpen = false; // 다이얼로그 표시 여부
   bool _isConnected = false; // 인터넷 연결 상태
+
+  Future<bool> _loginCheck() async {
+    final SharedPreferences preferences =
+    await SharedPreferences.getInstance();
+    String? id = preferences.getString("id");
+    String? pw = preferences.getString("pw");
+    if (id != null && pw != null){
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      try {
+        await auth.signInWithEmailAndPassword(
+            email: id, password: pw);
+        return true;
+      } on FirebaseAuthException catch (e) {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
 
 
   @override
@@ -53,16 +75,27 @@ class _IntroPageState extends State<IntroPage> {
         _isDialogOpen = false;
       }
 
-      Timer(const Duration(seconds: 2), () {
-        if (mounted) { // mounted check 추가
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => AuthPage(),
-            ),
-          );
+      _loginCheck().then((value){
+        if(value == true) {
+          Timer(const Duration(seconds: 2), () {
+            if (mounted) { // mounted check 추가
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => MainPage()),
+              );
+            }
+          });
+        } else {
+          Timer(const Duration(seconds: 2), () {
+            if (mounted) { // mounted check 추가
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => AuthPage()),
+              );
+            }
+          });
         }
       });
-
     } else {
       _showOfflineDialog(); // 인터넷 연결 안되었을 때 다이얼로그 표시
     }
