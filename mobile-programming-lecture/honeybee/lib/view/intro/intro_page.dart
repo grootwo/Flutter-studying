@@ -10,6 +10,7 @@ import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/user.dart';
+import '../auth/auth_page.dart';   // ★ 추가된 부분
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
@@ -159,7 +160,8 @@ class _IntroPage extends State<IntroPage> {
                   });
                 } else {
                   Future.delayed(const Duration(seconds: 2), () {
-                    print('로그인 안됨');
+                    // ★ 이미지에서 요구한 추가 코드
+                    Get.off(const AuthPage());
                   });
                 }
               });
