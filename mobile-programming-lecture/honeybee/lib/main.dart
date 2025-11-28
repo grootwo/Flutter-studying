@@ -128,8 +128,8 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HobbyAddPage(),
-      //home: IntroPage(),
+      // home: HobbyAddPage(),
+      home: IntroPage(),
     );
   }
 }
