@@ -10,7 +10,8 @@ import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/user.dart';
-import '../auth/auth_page.dart';   // ★ 추가된 부분
+import '../auth/auth_page.dart';
+import '../hobby/hobby_selection_page.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
@@ -40,11 +41,7 @@ class _IntroPage extends State<IntroPage> {
       sound: true,
     );
 
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      return true;
-    } else {
-      return false;
-    }
+    return settings.authorizationStatus == AuthorizationStatus.authorized;
   }
 
   Future<bool> _loginCheck() async {
@@ -61,7 +58,7 @@ class _IntroPage extends State<IntroPage> {
           email: auth.currentUser!.email!,
           uid: auth.currentUser!.uid,
         );
-        user.hobby = hobby;
+        user.hobby = hobby; // 취미 정보 넣기
         Get.lazyPut(() => user);
 
         await Future.delayed(const Duration(seconds: 2));
@@ -153,18 +150,30 @@ class _IntroPage extends State<IntroPage> {
             case ConnectionState.active:
               return introView();
             case ConnectionState.done:
+
+            /// ----------------------------
+            /// 로그인 결과 처리
+            /// ----------------------------
               _loginCheck().then((value) {
                 if (value == true) {
                   Future.delayed(const Duration(seconds: 2), () {
-                    Get.snackbar(Constant.APP_NAME, '로그인 되었습니다.');
+                    Get.snackbar(Constant.APP_NAME, '로그인 되었습니다');
+
+                    /// ★ 취미 등록 여부 체크
+                    if (user.hobby != null && user.hobby!.isNotEmpty) {
+                      // 메인 페이지로 이동 로직이 필요하면 여기에 작성
+                      // Get.off(MainPage());
+                    } else {
+                      Get.off(const HobbySelectionPage());
+                    }
                   });
                 } else {
                   Future.delayed(const Duration(seconds: 2), () {
-                    // ★ 이미지에서 요구한 추가 코드
                     Get.off(const AuthPage());
                   });
                 }
               });
+
               return introView();
           }
         },
