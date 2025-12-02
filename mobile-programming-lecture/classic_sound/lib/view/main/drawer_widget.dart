@@ -1,4 +1,5 @@
 import 'package:classic_sound/view/user/user_page.dart';
+import 'package:classic_sound/view/user/user_tag_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
@@ -29,7 +30,7 @@ class DrawerWidget extends StatelessWidget {
               ListTile(
                 title: const Text('다운로드 받은 뮤직'),
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                     return  UserPage( database: database,);
                   }));
                 },
@@ -37,7 +38,11 @@ class DrawerWidget extends StatelessWidget {
               ),
               ListTile(
                 title: const Text('나의 취향'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return UserTagPage(database: database,);
+                  }));
+                },
               ),
               ListTile(
                 title: const Text('설정'),
