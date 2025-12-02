@@ -27,6 +27,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:306103682715:android:075790642ad8618e95a83e",
+        "android_client_info": {
+          "package_name": "com.example.honeybee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFEB4XtgFDr3qy11RJo-bzLNKSAyDC9nE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:306103682715:android:3288dc49733e593095a83e",
         "android_client_info": {
           "package_name": "com.example.my_budongsan"
