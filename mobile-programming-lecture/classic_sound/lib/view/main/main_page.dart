@@ -1,6 +1,7 @@
 import 'package:classic_sound/data/constant.dart';
 import 'package:classic_sound/data/music.dart';
 import 'package:classic_sound/view/main/sound/download_listtile.dart';
+import 'package:classic_sound/view/main/sound/sound_search_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,24 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(Constant.APP_NAME),
-        actions: [IconButton(onPressed: () async {}, icon: Icon(Icons.search))],
+        actions: [IconButton(onPressed: () async {
+          var result = await showDialog(
+            context: context, builder: (context) {
+              return const MusicSearchDialog();
+          }
+          );
+          if (result != null) {
+            (result as Query).get().asStream().listen((event) {
+              if (mounted) {
+                setState(() {
+                  documentList = event.docs;
+                });
+              }
+            });
+          } else {
+            getMusicList();
+          }
+        }, icon: Icon(Icons.search))],
       ),
       drawer:  Drawer(child: DrawerWidget(database: widget.database,)),
       body: ListView.builder(
