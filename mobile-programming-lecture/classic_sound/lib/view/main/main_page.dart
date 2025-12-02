@@ -6,6 +6,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
+import 'drawer_widget.dart';
+
+
 
 class MainPage extends StatefulWidget {
   final Database database;
@@ -40,7 +43,7 @@ class _MainPageState extends State<MainPage> {
         title: const Text(Constant.APP_NAME),
         actions: [IconButton(onPressed: () async {}, icon: Icon(Icons.search))],
       ),
-
+      drawer:  Drawer(child: DrawerWidget(database: widget.database,)),
       body: ListView.builder(
         itemBuilder: (context, value) {
           Music music = Music.fromStoreData(documentList[value]);
