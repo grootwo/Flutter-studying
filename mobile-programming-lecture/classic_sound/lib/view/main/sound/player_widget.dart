@@ -58,7 +58,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
   @override
   void setState(VoidCallback fn) {
-    if (this.mounted) {
+    if (mounted) {
       super.setState(fn);
     }
   }
