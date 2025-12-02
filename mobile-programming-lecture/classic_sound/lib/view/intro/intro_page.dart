@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'package:classic_sound/data/constant.dart';
 import 'package:classic_sound/view/main/main_page.dart';
+import '../auth/auth_page.dart';
+import '../user/user_page.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../auth/auth_page.dart';
 import 'package:sqflite/sqflite.dart';
 
 
@@ -120,7 +121,11 @@ class _IntroPageState extends State<IntroPage> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => UserPage(database: widget.database,))
+                  );
                   _isDialogOpen = false;
                 },
                 child: const Text('오프라인으로 사용'),
