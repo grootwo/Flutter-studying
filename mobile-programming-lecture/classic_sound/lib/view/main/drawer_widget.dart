@@ -1,8 +1,10 @@
 import 'package:classic_sound/view/user/user_page.dart';
-import 'package:classic_sound/view/user/user_tag_page.dart';
+import 'package:classic_sound/view/setting/setting_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:classic_sound/view/setting/license_page.dart';
+
 
 class DrawerWidget extends StatelessWidget {
   DrawerWidget({super.key, required this.database});
@@ -30,7 +32,7 @@ class DrawerWidget extends StatelessWidget {
               ListTile(
                 title: const Text('다운로드 받은 뮤직'),
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
                     return  UserPage( database: database,);
                   }));
                 },
@@ -38,22 +40,28 @@ class DrawerWidget extends StatelessWidget {
               ),
               ListTile(
                 title: const Text('나의 취향'),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return UserTagPage(database: database,);
-                  }));
-                },
+                onTap: () {},
               ),
               ListTile(
                 title: const Text('설정'),
-                onTap: () async {},
+                onTap: () async {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return SettingPage(database: database,);
+                  }));
+                },
               ),
+
               ListTile(
                 title: const Text('라이센스'),
-                onTap: () async {},
+                onTap: () async {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return SoundLicensePage();
+                  }));
+                },
               ),
             ],
           );
+
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
