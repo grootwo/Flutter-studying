@@ -62,7 +62,7 @@ class _DownloadListTileState extends State<DownloadListTile> {
         bool exists = await file.exists();
         if (exists) {
           Navigator.of(context).push(MaterialPageRoute(builder: (context){
-            return SoundDetailPage(music: widget.music);
+            return SoundDetailPage(music: widget.music, database: widget.database,);
           }));
 
         } else {

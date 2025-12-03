@@ -4,10 +4,12 @@ import 'package:classic_sound/view/main/sound/player_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart';
 
 class SoundDetailPage extends StatefulWidget {
   final Music music;
-  const SoundDetailPage({super.key, required this.music});
+  final Database database;
+  const SoundDetailPage({super.key, required this.music, required this.database});
 
   @override
   State<StatefulWidget> createState() {
@@ -61,6 +63,8 @@ class _SoundDetailPage extends State<SoundDetailPage> {
               ClipOval(
                 child: Image.network(
                   currentMusic.imageDownloadUrl,
+                  width: 250,
+                  height: 250,
                   errorBuilder: (context, obj, err) {
                     return const Icon(
                       Icons.music_note_outlined,
@@ -146,7 +150,16 @@ class _SoundDetailPage extends State<SoundDetailPage> {
               ),
 
               /// 플레이어 위젯
-              PlayerWidget(player: player),
+              PlayerWidget(
+                player: player,
+                music: currentMusic,
+                database: widget.database,
+                callback: (music) {
+                  setState(() {
+                    currentMusic = music as Music;
+                  });
+                },
+              ),
             ],
           ),
         ),
