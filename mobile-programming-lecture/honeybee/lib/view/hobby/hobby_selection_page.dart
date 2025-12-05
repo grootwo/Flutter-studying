@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:honeybee/data/user.dart';
 import 'package:honeybee/view/hobby/hobby_api.dart';
+import 'package:honeybee/view/main/main_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/constant.dart';
@@ -119,6 +120,7 @@ class _HobbySelectionPageState extends State<HobbySelectionPage> {
               final SharedPreferences preferences =
               await SharedPreferences.getInstance();
               preferences.setString("hobby", myHobby);
+              Get.off(MainPage());
             });
           },
           child: Text('다음'),
