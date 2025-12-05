@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:honeybee/view/main/sub/home_page.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -52,7 +53,7 @@ class _MainPage extends State<MainPage> {
   SubPage(int tapNumber) {
     switch (tapNumber) {
       case 0:
-      // return HomePage();
+        return HomePage();
       case 1:
       // return SearchPage();
       case 2:
