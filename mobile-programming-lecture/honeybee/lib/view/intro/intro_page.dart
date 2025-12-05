@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/user.dart';
 import '../auth/auth_page.dart';
 import '../hobby/hobby_selection_page.dart';
+import 'package:honeybee/view/main/main_page.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
@@ -161,8 +162,7 @@ class _IntroPage extends State<IntroPage> {
 
                     /// ★ 취미 등록 여부 체크
                     if (user.hobby != null && user.hobby!.isNotEmpty) {
-                      // 메인 페이지로 이동 로직이 필요하면 여기에 작성
-                      // Get.off(MainPage());
+                      Get.off(MainPage());
                     } else {
                       Get.off(const HobbySelectionPage());
                     }
