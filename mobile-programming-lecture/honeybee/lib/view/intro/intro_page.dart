@@ -6,13 +6,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:honeybee/data/constant.dart';
+import 'package:honeybee/view/main/main_page.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/user.dart';
 import '../auth/auth_page.dart';
 import '../hobby/hobby_selection_page.dart';
-import 'package:honeybee/view/main/main_page.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
@@ -160,11 +160,13 @@ class _IntroPage extends State<IntroPage> {
                   Future.delayed(const Duration(seconds: 2), () {
                     Get.snackbar(Constant.APP_NAME, '로그인 되었습니다');
 
-                    /// ★ 취미 등록 여부 체크
-                    if (user.hobby != null && user.hobby!.isNotEmpty) {
+                    /// ☆ 취미 등록 여부 체크
+                    if (user.hobby != null) {
+                      // 메인 페이지로 이동
                       Get.off(MainPage());
                     } else {
-                      Get.off(const HobbySelectionPage());
+                      // 취미 선택 페이지로 이동
+                      Get.off(HobbySelectionPage());
                     }
                   });
                 } else {
