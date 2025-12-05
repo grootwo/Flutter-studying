@@ -93,7 +93,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: Paperlogy
+     - family: paperlogy
        fonts:
          - asset: res/font/Paperlogy-1Thin.ttf
   #       - asset: fonts/Schyler-Italic.ttf

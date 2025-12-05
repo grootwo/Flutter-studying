@@ -134,7 +134,7 @@ class _AuthPage extends State<AuthPage> {
             children: <Widget>[
               const Text(
                 '허니비',
-                style: TextStyle(fontFamily: 'clover', fontSize: 30),
+                style: TextStyle(fontFamily: 'paperlogy', fontSize: 30),
               ),
               Lottie.asset(
                 'res/animation/honeybee.json',

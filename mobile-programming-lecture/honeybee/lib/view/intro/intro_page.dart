@@ -190,7 +190,7 @@ class _IntroPage extends State<IntroPage> {
           children: [
             const Text(
               Constant.APP_NAME,
-              style: TextStyle(fontSize: 50, fontFamily: 'clover'),
+              style: TextStyle(fontSize: 50, fontFamily: 'paperlogy'),
             ),
             const SizedBox(height: 20),
             Lottie.asset('res/animation/honeybee.json'),
