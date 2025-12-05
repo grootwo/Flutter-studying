@@ -75,4 +75,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'example-abfd2.firebasestorage.app',
     iosBundleId: 'com.example.honeybee',
   );
+
 }
